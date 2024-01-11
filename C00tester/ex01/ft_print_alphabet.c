@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stan <stan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 11:29:37 by stan              #+#    #+#             */
-/*   Updated: 2022/04/08 12:55:47 by stan             ###   ########.fr       */
+/*   Created: 2022/04/07 15:10:55 by stan              #+#    #+#             */
+/*   Updated: 2022/04/08 12:53:03 by stan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	ft_print_alphabet(void)
 {
-	char x[1];
-	x[1] = 's';
-	write(1, &c, 1);
+	write(1, "abcdefghijklmnopqrstuvwxyz", 26);
 }
