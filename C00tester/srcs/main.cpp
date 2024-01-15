@@ -5,7 +5,7 @@ UnitTest getEx00test() {
 	test.addRequiredFile("ft_putchar.c");
 	test.addTemporaryMainFile(
 		"void ft_putchar(char c);",
-		"printf(\"%c\", argv[1][0]);"
+		"ft_putchar(argv[1][0]);"
 	);
 	for (char c = '0'; c <= '9'; c++)
 		test.addTestCase(std::string(1, c), std::string(1, c));

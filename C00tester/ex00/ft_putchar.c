@@ -9,12 +9,11 @@
 /*   Updated: 2022/04/08 12:55:47 by stan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <unistd.h>
+#include <signal.h>
 
 void	ft_putchar(char c)
 {
-	char x[1];
-	x[1] = 's';
+	raise(SIGSEGV);
 	write(1, &c, 1);
 }
