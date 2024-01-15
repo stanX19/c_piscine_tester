@@ -13,7 +13,6 @@ UnitTest getEx00test() {
 		test.addTestCase(std::string(1, c), std::string(1, c));
 	for (char c = 'A'; c <= 'Z'; c++)
 		test.addTestCase(std::string(1, c), std::string(1, c));
-	test.addTestCase("z", "z");
 	return test;
 }
 
@@ -74,6 +73,7 @@ int main(int argc, char **argv) {
 		getEx00test(),
 		getEx01test(),
 		getEx02test(),
+		getEx03test(),
 		getEx04test()
 	};
 	for (auto &test : tests) {
