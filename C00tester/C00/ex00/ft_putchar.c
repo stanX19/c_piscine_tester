@@ -14,6 +14,6 @@
 
 void	ft_putchar(char c)
 {
-	raise(SIGSEGV);
+	//raise(SIGSEGV);
 	write(1, &c, 1);
 }

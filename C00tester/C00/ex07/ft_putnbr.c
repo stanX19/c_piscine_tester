@@ -14,28 +14,24 @@
 
 void	ft_putnbr(int nb)
 {
-	int		placement;
-	int		i;
-	int		len;
-	char	all[32];
-
-	placement = 1;
-	i = 0;
+	if (nb == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return ;
+	}
 	if (nb < 0)
 	{
-		nb *= -1;
 		write(1, "-", 1);
+		nb = -nb;
 	}
-	while (nb >= placement)
+	if (nb >= 10)
 	{
-		all[i] = (nb % (placement * 10)) / placement + 48;
-		placement *= 10;
-		i++;
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
 	}
-	len = i;
-	while (i != -1)
+	else
 	{
-		i--;
-		write(1, &all[i], 1);
+		nb += '0';
+		write(1, &nb, 1);
 	}
 }

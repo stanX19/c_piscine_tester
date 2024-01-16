@@ -1,5 +1,5 @@
 SRCDIR		= srcs
-SRCS		= $(wildcard $(SRCDIR)/*.cpp)
+SRCS		= $(wildcard $(SRCDIR)/*.cpp) $(wildcard $(SRCDIR)/*/*.cpp)
 HEADER_DIR	= headers
 HEADERS		= $(wildcard $(HEADER_DIR)/*.hpp)
 OBJDIR		= objs
@@ -18,10 +18,12 @@ UP			= \033[1A
 FLUSH		= \033[2K
 RM			= rm -rf
 
-all: $(NAME)
-	./$(NAME)
+ARGV		= C00 -afd
 
-$(NAME): $(OBJDIRS) $(OBJS) $(HEADERS) $(UNITTEST_LIB)
+all: $(NAME)
+	./$(NAME) $(ARGV)
+
+$(NAME): $(UNITTEST_LIB) $(OBJDIRS) $(OBJS) $(HEADERS)
 	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) $(UNITTEST_LIB) -o $(NAME)
 	@echo "$(UP)$(FLUSH)$(UP)"
 
