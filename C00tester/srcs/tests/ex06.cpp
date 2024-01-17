@@ -3,30 +3,29 @@
 static std::string ft_print_comb2(void)
 {
 	std::ostringstream oss;
-	char	buf[6] = "00 01";
+    int    i;
+    int    j;
 
-	while (buf[0] <= '9')
-	{
-		while (buf[1] <= '9')
-		{
-			while (buf[3] <= '9')
-			{
-				while (buf[4] <= '9')
-				{
-					oss << buf;
-					if (!(buf[0] == '9' && buf[1] == '8'))
-						oss << ", ";
-					buf[4]++;
-				}
-				buf[4] = '0';
-				buf[3]++;
-			}
-			buf[3] = buf[0];
-			buf[4] = buf[1]++ + 2;
-		}
-		buf[1] = '0';
-		buf[0]++;
-	}
+    i = 0;
+    j = 1;
+    while (i <= 98)
+    {
+        j = i + 1;
+        while (j <= 99)
+        {
+            oss << (i / 10)
+            	<< (i % 10)
+            	<< " "
+       		 	<< (j / 10)
+            	<< (j % 10);
+            if (i != 98 || j != 99)
+            {
+                oss << ", ";
+            }
+            j++;
+        }
+        i++;
+    }
 	return oss.str();
 }
 
