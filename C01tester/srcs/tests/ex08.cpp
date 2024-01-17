@@ -1,79 +1,33 @@
 #include "C01tester.hpp"
 
-void	ft_putout(std::ostringstream &oss, int nb, int *tab, int pos)
-{
-	int i;
-
-	if (pos == 1)
-	{
-		oss << ", ";
-	}
-	i = 0;
-	while (i < nb)
-	{
-		oss << tab[i];
-		i++;
-	}
-}
-
-void	ft_print_combn_increment(int nb, int *tab)
-{
-	int i;
-	int max;
-
-	i = nb - 1;
-	max = 9;
-	while (tab[i] == max)
-	{
-		i -= 1;
-		max -= 1;
-	}
-	tab[i] += 1;
-	while (i < nb)
-	{
-		tab[i + 1] = tab[i] + 1;
-		i += 1;
-	}
-}
-
-std::string	ft_print_combn(int nb)
-{
-	std::ostringstream oss;
-	int tab[10];
-	int i;
-
-	i = 0;
-	while (i < nb)
-	{
-		tab[i] = i;
-		i++;
-	}
-	ft_putout(oss, nb, tab, 0);
-	while (tab[0] != 10 - nb || tab[nb - 1] != 9)
-	{
-		if (tab[nb - 1] != 9)
-		{
-			tab[nb - 1] += 1;
-		}
-		else
-		{
-			ft_print_combn_increment(nb, tab);
-		}
-		ft_putout(oss, nb, tab, 1);
-	}
-	return oss.str();
-}
-
 UnitTest getEx08test() {
-	std::string name = "ft_print_combn";
+	std::string name = "ft_sort_int_tab";
 	UnitTest test("ex08");
 	test.addRequiredFile(name + ".c");
 	test.addTemporaryMainFile(
-		"void " + name + "(int i);",
-		name + "(atoi(argv[1]));"
+		"void " + name + "(int *arr, int size);",
+		"int arr[1000];"
+		"for (int i = 1; i < argc; i++) {"
+		"	arr[i - 1] = atoi(argv[i]);"
+		"}"
+		+ name + "(arr, argc - 1);"
+		"for (int i = 0; i < argc - 1; i++) {"
+		"	printf(\"%i \", arr[i]);"
+		"}"
 	);
-	for (int i = 1; i < 10; i++)
-		test.addTestCase(std::to_string(i), ft_print_combn(i));
+	test.addTestCase("1 ", "1 ");
+	test.addTestCase("0 1 ", "0 1 ");
+	test.addTestCase("3 1 2", "1 2 3 ");
+	test.addTestCase("9 8 7 6 5 4 3 2 1 ", "1 2 3 4 5 6 7 8 9 ");
+	test.addTestCase("4 1 -1 -2 5 4 1 ", "-2 -1 1 1 4 4 5 ");
+	test.addTestCase("2147483647 -2147483648 1 2 3 ", "-2147483648 1 2 3 2147483647 ");
+	std::ostringstream input;
+	std::ostringstream output;
+	for (int i = 0; i < 1000; i++) {
+		input << 999 - i << " ";
+		output << i << " ";
+	}
+	test.addTestCase(input.str(), output.str());
 
 	return test;
 }
