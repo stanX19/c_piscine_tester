@@ -1,33 +1,26 @@
 #include "C02tester.hpp"
 
-UnitTest getEx08test() {
-	std::string name = "ft_sort_int_tab";
-	UnitTest test("ex08");
-	test.addRequiredFile(name + ".c");
-	test.addTemporaryMainFile(
-		"void " + name + "(int *arr, int size);",
-		"int arr[1000];"
-		"for (int i = 1; i < argc; i++) {"
-		"	arr[i - 1] = atoi(argv[i]);"
-		"}"
-		+ name + "(arr, argc - 1);"
-		"for (int i = 0; i < argc - 1; i++) {"
-		"	printf(\"%i \", arr[i]);"
-		"}"
-	);
-	test.addTestCase("1 ", "1 ");
-	test.addTestCase("0 1 ", "0 1 ");
-	test.addTestCase("3 1 2", "1 2 3 ");
-	test.addTestCase("9 8 7 6 5 4 3 2 1 ", "1 2 3 4 5 6 7 8 9 ");
-	test.addTestCase("4 1 -1 -2 5 4 1 ", "-2 -1 1 1 4 4 5 ");
-	test.addTestCase("2147483647 -2147483648 1 2 3 ", "-2147483648 1 2 3 2147483647 ");
-	std::ostringstream input;
-	std::ostringstream output;
-	for (int i = 0; i < 1000; i++) {
-		input << 1000 - i + 1 << " ";
-		output << i << " ";
-	}
-	test.addTestCase(input.str(), output.str());
+static std::string qt("\"");
 
+UnitTest getEx08test() {
+	UnitTest test("ex08");
+	test.addRequiredFile("ft_strlowcase.c");
+	test.addTemporaryMainFile(
+		"char*	ft_strlowcase(char *str);",
+		"printf(\"%s\", ft_strlowcase(argv[1]));"
+	);
+	test.addTestCase(qt + "Hello World!" + qt, "hello world!");
+	test.addTestCase("abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz");
+	test.addTestCase("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz");
+	test.addTestCase("AbCdEfGhIjKlMnOpQrStUvWxYz", "abcdefghijklmnopqrstuvwxyz");
+	test.addTestCase("aBcDeFgHiJkLmNoPqRsTuVwXyZ", "abcdefghijklmnopqrstuvwxyz");
+	test.addTestCase(qt + qt, "");
+	test.addTestCase("A", "a");
+	test.addTestCase("Z", "z");
+	test.addTestCase("0123456789", "0123456789");
+	test.addTestCase("\"@AZ[\\`az{\"", "@az[`az{");
+	test.addTestCase("0A#1B#2C#3D#4E#5F#6G#7X#8Y#9Z", "0a#1b#2c#3d#4e#5f#6g#7x#8y#9z");
+	test.addTestCase(qt + "\a\b\t\n\v\f\r\x7F" + qt, "\a\b\t\n\v\f\r\x7F");
+	test.addTestCase(qt + "A\aB\bC\tD\nE\vF\fG\rH\x7FI J" + qt, "a\ab\bc\td\ne\vf\fg\rh\x7Fi j");
 	return test;
 }

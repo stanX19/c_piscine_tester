@@ -19,7 +19,7 @@ char	*ft_strlowcase(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] > 64 && str[i] < 91)
+		if (str[i] >= 'A' && str[i] <= 'Z')
 			str[i] += 32;
 		i++;
 	}
