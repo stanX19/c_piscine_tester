@@ -18,7 +18,7 @@ UnitTest getEx03test() {
 		"printf(\"%i\", ft_str_is_numeric(argv[1]));"
 	);
 	static const char *non_numeric = "\t\r\n\f\v\b abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	for (size_t i = 1; i < 5; i++) {
+	for (size_t i = 1; i <= 10; i++) {
 		std::string str = gen_num_str(i);
 		test.addTestCase(str, "1");
 		test.addTestCase(qt + str + non_numeric[i % 59] + qt, "0");

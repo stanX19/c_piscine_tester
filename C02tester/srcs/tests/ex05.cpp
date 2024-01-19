@@ -18,7 +18,9 @@ UnitTest getEx05test() {
 		"printf(\"%i\", ft_str_is_uppercase(argv[1]));"
 	);
 	static const char *non_uppercase = "abcdefghijklmnopqrstuvwxyz\t\r\n\f\v\b 1234567890";
-	for (size_t i = 1; i < 5; i++) {
+	for (size_t i = 1; i < 26; i++) {
+		if (i == 4)
+			i = 24;
 		std::string str = gen_upper_str(i);
 		test.addTestCase(qt + str + qt, "1");
 		test.addTestCase(qt + str + non_uppercase[i % 43] + qt, "0");

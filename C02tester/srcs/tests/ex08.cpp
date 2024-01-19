@@ -19,7 +19,7 @@ UnitTest getEx08test() {
 	test.addTestCase("Z", "z");
 	test.addTestCase("0123456789", "0123456789");
 	test.addTestCase("\"@AZ[\\`az{\"", "@az[`az{");
-	test.addTestCase("0A#1B#2C#3D#4E#5F#6G#7X#8Y#9Z", "0a#1b#2c#3d#4e#5f#6g#7x#8y#9z");
+	test.addTestCase("0A_1B_2C_3D_4E_5F_6G_7X_8Y_9Z", "0a_1b_2c_3d_4e_5f_6g_7x_8y_9z");
 	test.addTestCase(qt + "\a\b\t\n\v\f\r\x7F" + qt, "\a\b\t\n\v\f\r\x7F");
 	test.addTestCase(qt + "A\aB\bC\tD\nE\vF\fG\rH\x7FI J" + qt, "a\ab\bc\td\ne\vf\fg\rh\x7Fi j");
 	return test;
