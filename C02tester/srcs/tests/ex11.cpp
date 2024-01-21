@@ -54,3 +54,4 @@ UnitTest getEx11test() {
 	test.addTestCase(qt + buf2 + qt, convertUnprintableToHex(buf2));
 	return test;
 }
+
