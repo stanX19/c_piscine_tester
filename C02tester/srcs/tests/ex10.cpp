@@ -2,12 +2,24 @@
 #include <string.h>
 static std::string s0("\0", 1);
 
+// from apple source code
+size_t std_strlcpy(char * dst, const char * src, size_t maxlen) {
+    const size_t srclen = strlen(src);
+    if (srclen + 1 < maxlen) {
+        memcpy(dst, src, srclen + 1);
+    } else if (maxlen != 0) {
+        memcpy(dst, src, maxlen - 1);
+        dst[maxlen-1] = '\0';
+    }
+    return srclen;
+}
+
 std::string out_strlcpy(const char *src, int n) {
 	char buf[90];
 	int i = 0;
 	while (i < 90)
 		buf[i++] = '@';
-	n = strlcpy(buf, src, n);
+	n = std_strlcpy(buf, src, n);
 	return std::string(buf, 90) + " " + std::to_string(n);
 }
 
