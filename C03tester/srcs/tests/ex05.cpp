@@ -1,31 +1,70 @@
 #include "C03tester.hpp"
+#include <cstring>
+static std::string qt("\"", 1);
 
-static std::string qt("\"");
 
-std::string gen_upper_str(int size) {
-	const char *alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	std::ostringstream oss;
-	for (int i = 0; i < size; i++)
-		oss << alpha[i % 26];
-	return oss.str();
+// apple source code
+size_t std_strlcat(char *dst, const char *src, size_t siz)
+{
+	char *d = dst;
+	const char *s = src;
+	size_t n = siz;
+	size_t dlen;
+
+	/* Find the end of dst and adjust bytes left but don't go past end */
+	while (n-- != 0 && *d != '\0')
+		d++;
+	dlen = d - dst;
+	n = siz - dlen;
+
+	if (n == 0)
+		return(dlen + strlen(s));
+	while (*s != '\0') {
+		if (n != 1) {
+			*d++ = *s;
+			n--;
+		}
+		s++;
+	}
+	*d = '\0';
+
+	return(dlen + (s - src));	/* count does not include NUL */
+}
+
+std::string out_strlcat(const char *dst, const char *src, unsigned int n) {
+	char buf[90];
+	int i = 0;
+	while (i < 90)
+		buf[i++] = '@';
+	strcpy(buf, dst);
+	size_t ret = std_strlcat(buf, src, n);
+	return std::string(buf, 90) + " " + std::to_string(ret);
 }
 
 UnitTest getEx05test() {
 	UnitTest test("ex05");
-	test.addRequiredFile("ft_str_is_uppercase.c");
+	test.addRequiredFile("ft_strlcat.c");
 	test.addTemporaryMainFile(
-		"int	ft_str_is_uppercase(char *str);",
-		"printf(\"%i\", ft_str_is_uppercase(argv[1]));"
+		"unsigned int ft_strlcat(char *dst, char *src, unsigned int nb);",
+		"char dst[90];"
+		"memset(dst, '@', 90);"
+		"strcpy(dst, argv[1]);"
+		"unsigned int x = ft_strlcat(dst, argv[2], atoi(argv[3]));"
+		"write(1, dst, 90);"
+		"printf(\" %u\", x);"
 	);
-	static const char *non_uppercase = "abcdefghijklmnopqrstuvwxyz\t\r\n\f\v\b 1234567890";
-	for (size_t i = 1; i < 26; i++) {
-		if (i == 4)
-			i = 24;
-		std::string str = gen_upper_str(i);
-		test.addTestCase(qt + str + qt, "1");
-		test.addTestCase(qt + str + non_uppercase[i % 43] + qt, "0");
-		test.addTestCase(qt + str + non_uppercase[i * 3 % 43] + str + qt, "0");
-		test.addTestCase(qt + non_uppercase[i * 5 % 43] + str + non_uppercase[i * 7 % 43] + qt, "0");
+	test.addTestCase("\"Hello \" \"world!\" 7", out_strlcat("Hello ", "world!", 7));
+	test.addTestCase("\"\\`~!@#\" \"\\$%^&*()\" 7", out_strlcat("`~!@#", "$%^&*()", 7));
+	for (size_t i = 0; i < 5; i++) {
+		std::string str1 = utils::generateRandomString(i);
+		std::string str2 = utils::generateRandomString(i);
+		test.addTestCase(qt + str1 + qt + " " + qt + str2 + qt + " " + std::to_string(i), out_strlcat(str1.c_str(), str2.c_str(), i));
+		test.addTestCase(qt + str1 + qt + " " + qt + str2 + qt + " " + std::to_string(i + 1), out_strlcat(str1.c_str(), str2.c_str(), i + 1));
+		test.addTestCase(qt + str1 + qt + " " + qt + str2 + qt + " " + std::to_string(i * 2 + 2), out_strlcat(str1.c_str(), str2.c_str(), i * 2 + 2));
+		test.addTestCase(qt + str1 + qt + " " + qt + str2 + qt + " " + std::to_string(i / 2), out_strlcat(str1.c_str(), str2.c_str(), i / 2));
 	}
+	test.addTestCase("\"\" \"\" 1", out_strlcat("", "", 1));
+	test.addTestCase("\"\n\n\n\" \"\n\n\n\" 4", out_strlcat("\n\n\n", "\n\n\n", 4));
+	test.addTestCase("\" \t\r\n\" \"\f\v\b\" 4", out_strlcat(" \t\r\n", "\f\v\b", 4));
 	return test;
 }

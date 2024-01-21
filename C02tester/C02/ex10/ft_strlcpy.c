@@ -6,7 +6,7 @@
 /*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 12:12:00 by stan              #+#    #+#             */
-/*   Updated: 2024/01/19 12:24:58 by shatan           ###   ########.fr       */
+/*   Updated: 2024/01/21 14:50:15 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	unsigned int	i;
 
 	i = 0;
-	while (i < size - 1 && src[i])
+	while (i + 1 < size && src[i])
 	{
 		dest[i] = src[i];
 		++i;

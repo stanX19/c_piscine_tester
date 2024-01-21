@@ -6,12 +6,11 @@
 /*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 11:29:37 by stan              #+#    #+#             */
-/*   Updated: 2024/01/17 14:19:40 by shatan           ###   ########.fr       */
+/*   Updated: 2024/01/21 18:03:30 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <signal.h>
 
 void	ft_putchar(char c)
 {

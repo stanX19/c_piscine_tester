@@ -1,6 +1,7 @@
 #include "C02tester.hpp"
 #include <string.h>
-static std::string s0("\0", 1);
+
+static std::string qt("\"", 1);
 
 // from apple source code
 size_t std_strlcpy(char * dst, const char * src, size_t maxlen) {
@@ -36,10 +37,10 @@ UnitTest getEx10test() {
 		"printf(\" %u\", t);"
 	);
 	test.addTestCase("\"Hello world!\" 13", out_strlcpy("Hello world!", 13));
-	for (size_t i = 10; i < 20; i++) {
+	for (size_t i = 0; i < 10; i++) {
 		std::string str = utils::generateRandomString(i);
-		test.addTestCase(str + " " + std::to_string(i * 2), out_strlcpy(str.c_str(), i * 2));
-		test.addTestCase(str + " " + std::to_string(i / 2), out_strlcpy(str.c_str(), i / 2));
+		test.addTestCase(qt + str + qt + " " + std::to_string(i * 2), out_strlcpy(str.c_str(), i * 2));
+		test.addTestCase(qt + str + qt + " " + std::to_string(i / 2), out_strlcpy(str.c_str(), i / 2));
 	}
 	test.addTestCase("\"\" 1", out_strlcpy("", 1));
 	test.addTestCase("\"\n\n\n\" 4", out_strlcpy("\n\n\n", 4));

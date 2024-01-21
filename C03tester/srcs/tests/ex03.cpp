@@ -1,29 +1,41 @@
 #include "C03tester.hpp"
+#include <string.h>
+static std::string qt("\"", 1);
 
-static std::string qt("\"");
-
-std::string gen_num_str(int size) {
-	const char *alpha = "1234567890";
-	std::ostringstream oss;
-	for (int i = 0; i < size; i++)
-		oss << alpha[i % 10];
-	return oss.str();
+std::string out_strncat(const char *dst, const char *src, unsigned int n) {
+	char buf[90];
+	int i = 0;
+	while (i < 90)
+		buf[i++] = '@';
+	strcpy(buf, dst);
+	strncat(buf, src, n);
+	return std::string(buf, 90);
 }
 
 UnitTest getEx03test() {
 	UnitTest test("ex03");
-	test.addRequiredFile("ft_str_is_numeric.c");
+	test.addRequiredFile("ft_strncat.c");
 	test.addTemporaryMainFile(
-		"int	ft_str_is_numeric(char *str);",
-		"printf(\"%i\", ft_str_is_numeric(argv[1]));"
+		"char *ft_strncat(char *dst, char *src, unsigned int nb);",
+		"char dst[90];"
+		"memset(dst, '@', 90);"
+		"strcpy(dst, argv[1]);"
+		"char* dst2 = ft_strncat(dst, argv[2], atoi(argv[3]));"
+		"if (dst != dst2) {printf(\"return value != dst\"); return 0; }"
+		"write(1, dst, 90);"
 	);
-	static const char *non_numeric = "\t\r\n\f\v\b abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	for (size_t i = 1; i <= 10; i++) {
-		std::string str = gen_num_str(i);
-		test.addTestCase(str, "1");
-		test.addTestCase(qt + str + non_numeric[i % 59] + qt, "0");
-		test.addTestCase(qt + str + non_numeric[i * 10 % 59] + str + qt, "0");
-		test.addTestCase(qt + non_numeric[i * 7 % 59] + str + non_numeric[i * 14 % 59] + qt, "0");
+	test.addTestCase("\"Hello \" world! 7", out_strncat("Hello ", "world!", 7));
+	test.addTestCase("\"\\`~!@#\" \"\\$%^&*()\" 7", out_strncat("`~!@#", "$%^&*()", 7));
+	for (size_t i = 0; i < 5; i++) {
+		std::string str1 = utils::generateRandomString(i);
+		std::string str2 = utils::generateRandomString(i);
+		test.addTestCase(qt + str1 + qt + " " + qt + str2 + qt + " " + std::to_string(i), out_strncat(str1.c_str(), str2.c_str(), i));
+		test.addTestCase(qt + str1 + qt + " " + qt + str2 + qt + " " + std::to_string(i + 1), out_strncat(str1.c_str(), str2.c_str(), i + 1));
+		test.addTestCase(qt + str1 + qt + " " + qt + str2 + qt + " " + std::to_string(i * 2 + 2), out_strncat(str1.c_str(), str2.c_str(), i * 2));
+		test.addTestCase(qt + str1 + qt + " " + qt + str2 + qt + " " + std::to_string(i / 2), out_strncat(str1.c_str(), str2.c_str(), i / 2));
 	}
+	test.addTestCase("\"\" \"\" 1", out_strncat("", "", 1));
+	test.addTestCase("\"\n\n\n\" \"\n\n\n\" 4", out_strncat("\n\n\n", "\n\n\n", 4));
+	test.addTestCase("\" \t\r\n\" \"\f\v\b\" 4", out_strncat(" \t\r\n", "\f\v\b", 4));
 	return test;
 }
