@@ -43,7 +43,7 @@ make
 ./C00tester -h
 ```
 
-4. You will see a usage message; take the time to read through it as it is not an error.
+4. You will see a usage message; take the time to read through it; it is not an error.
 
 You are now ready to test your project. For example, to test a project in the "~/Desktop/C00" directory with additional flags, you can use:
 
