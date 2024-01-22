@@ -51,7 +51,7 @@ You are now ready to test your project. For example, to test a project in the "~
 ./C00tester ~/Desktop/C00 -fd
 ```
 
-To run another tester, repeat from [step 1](Usage)
+To run another tester, repeat from [step 1](#Usage)
 
 ## linkage
 
