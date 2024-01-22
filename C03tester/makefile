@@ -21,7 +21,7 @@ RM			= rm -rf
 ARGV		= C03 -fd
 
 all: $(UNITTEST_LIB) $(NAME)
-	./$(NAME) $(ARGV)
+#	./$(NAME) $(ARGV)
 
 $(NAME): $(UNITTEST_LIB) $(OBJDIRS) $(OBJS) $(HEADERS)
 	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) $(UNITTEST_LIB) -o $(NAME)
