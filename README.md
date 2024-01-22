@@ -15,13 +15,13 @@ Tester for assignments in 42 c piscine
 
 ## Introduction
 
-This is a c file tester written in c++ designated to test assignments in c piscine. This project contains well designed test case that allows one to find potential bugs.
+This C++ tool tests C files for assignments in the C piscine. It compiles the test files, creates a temporary main file if needed, and runs the tests with specified command-line arguments (argv). The program reads and compares the output against expected results.
 
 ## Features
 
-- Test cases designed to go through all edge cases.
-- Flags that allows different modes of tester display.
-- Well designed UI to show why a test case failed.
+- Comprehensive test cases covering edge scenarios.
+- Flags for different tester display modes.
+- User-friendly UI to pinpoint test case failures.
 
 ## Getting Started
 
