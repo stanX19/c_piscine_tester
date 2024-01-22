@@ -18,10 +18,10 @@ UP			= \033[1A
 FLUSH		= \033[2K
 RM			= rm -rf
 
-ARGV		= C02 -ad
+ARGV		= C02 -fd
 
 all: $(NAME)
-	./$(NAME) $(ARGV)
+#	./$(NAME) $(ARGV)
 
 $(NAME): $(UNITTEST_LIB) $(OBJDIRS) $(OBJS) $(HEADERS)
 	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) $(UNITTEST_LIB) -o $(NAME)
