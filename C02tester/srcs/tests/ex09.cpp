@@ -16,6 +16,8 @@ UnitTest getEx09test() {
 	test.addTestCase(qt + "ab cd ef gh ij kl mn op qr st uv wx yz" + qt, "Ab Cd Ef Gh Ij Kl Mn Op Qr St Uv Wx Yz");
 	test.addTestCase(qt + "A BC DE FG HI JK LM NO PQ RS TU VW XY Z" + qt, "A Bc De Fg Hi Jk Lm No Pq Rs Tu Vw Xy Z");
 	test.addTestCase(qt + "a bc de fg hi jk lm no pq rs tu vw xy z" + qt, "A Bc De Fg Hi Jk Lm No Pq Rs Tu Vw Xy Z");
+	test.addTestCase("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "Abcdefghijklmnopqrstuvwxyz");
+	test.addTestCase("abcdefghijklmnopqrstuvwxyz", "Abcdefghijklmnopqrstuvwxyz");
 	test.addTestCase(qt + qt, "");
 	test.addTestCase("a", "A");
 	test.addTestCase("z", "Z");
