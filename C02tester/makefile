@@ -18,7 +18,7 @@ UP			= \033[1A
 FLUSH		= \033[2K
 RM			= rm -rf
 
-ARGV		= C02 -fd
+ARGV		= C02 -ad
 
 all: $(NAME)
 	./$(NAME) $(ARGV)
@@ -35,11 +35,12 @@ $(OBJDIRS):
 	mkdir -p $@
 	@echo "$(UP)$(FLUSH)$(UP)"
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(HEADERS) | $(OBJDIRS)
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(HEADERS) | $(OBJDIRS) $(UNITTEST_LIB)
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 	@echo "$(UP)$(FLUSH)$(UP)"
 
 clean:
+	@find . -name "temp*" -type f -delete
 	@$(RM) $(OBJDIR)
 
 fclean: clean
@@ -50,4 +51,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re $(UNITTEST_LIB)

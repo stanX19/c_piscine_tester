@@ -6,7 +6,7 @@
 /*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 11:23:46 by shatan            #+#    #+#             */
-/*   Updated: 2024/01/21 15:25:23 by shatan           ###   ########.fr       */
+/*   Updated: 2024/01/22 16:44:24 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	*ft_print_memory(void *addr, unsigned int size)
 int	main(void)
 {
 	char str[3000] = "abcdefghijklmnopqrstu\41vwxlyz|";
-	ft_print_memory(str, 300);
+	ft_print_memory(str, 30);
 	return (0);
 }
 */

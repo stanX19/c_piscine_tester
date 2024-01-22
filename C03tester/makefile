@@ -20,7 +20,7 @@ RM			= rm -rf
 
 ARGV		= C03 -fd
 
-all: $(NAME)
+all: $(UNITTEST_LIB) $(NAME)
 	./$(NAME) $(ARGV)
 
 $(NAME): $(UNITTEST_LIB) $(OBJDIRS) $(OBJS) $(HEADERS)
@@ -40,6 +40,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(HEADERS) | $(OBJDIRS)
 	@echo "$(UP)$(FLUSH)$(UP)"
 
 clean:
+	@find . -name "temp*" -type f -delete
 	@$(RM) $(OBJDIR)
 
 fclean: clean
@@ -50,4 +51,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re $(UNITTEST_LIB)
