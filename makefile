@@ -12,5 +12,5 @@ pull:
     done
 push: fclean
 	cd CUnitTest; git add .; git commit -m "auto"; git push; cd ..;
-	git add .; git commit -m "auto"; git push; cd ..;
+	git add .; git commit -m "auto"; git push;
 .PHONY: pull fclean push

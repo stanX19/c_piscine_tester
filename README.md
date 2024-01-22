@@ -19,8 +19,10 @@ This C++ tool tests C files for assignments in the C piscine. It compiles the te
 To get started, run the following commands in your terminal:
 
 ```bash
-git clone git@github.com:stanX19/c_piscine_tester.git c_piscine_tester
+git clone https://github.com/stanX19/c_piscine_tester.git c_piscine_tester
 cd c_piscine_tester
+git submodule init --recursive
+git submodule update --recursive
 ```
 
 ### Usage
