@@ -21,8 +21,7 @@ To get started, run the following commands in your terminal:
 ```bash
 git clone https://github.com/stanX19/c_piscine_tester.git c_piscine_tester
 cd c_piscine_tester
-git submodule init --recursive
-git submodule update --recursive
+git clone https://github.com/stanX19/CTest CUnitTest
 ```
 
 ### Usage
