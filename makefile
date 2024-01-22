@@ -1,4 +1,4 @@
-SUBDIRS = $(wildcard */C*)
+SUBDIRS = $(wildcard ./C*/)
 
 all: push
 
