@@ -4,13 +4,21 @@ Tester for assignments in 42 c piscine
 
 ## Introduction
 
-This C++ tool tests C files for assignments in the C piscine. It compiles the test files, creates a temporary main file if needed, and runs the tests with specified command-line arguments (argv). The program reads and compares the output against expected results.
+This C++ tool tests C files for assignments in the C piscine. It creates a temporary main file if needed, compiles the tested files, and run tests using command-line arguments (argv). The program then reads and compares the output against expected results.
 
 ## Features
 
 - Comprehensive test cases covering edge scenarios.
-- Flags for different tester display modes.
+
+	![Test case example](assets/test_case_example.png)
+
+- Meticulously designed flags for different display modes.
+
+	[Flags](#flags)
+
 - User-friendly UI to pinpoint test case failures.
+
+	![Fail case exmaple](assets/fail_case_example.png)
 
 ## Getting Started
 
@@ -24,7 +32,7 @@ cd c_piscine_tester
 git clone https://github.com/stanX19/CTest CUnitTest
 ```
 
-### Usage
+### Initialization
 
 1. Cd into the the tester you are interested in, e.g. "C00tester"
 
@@ -46,13 +54,69 @@ make
 
 4. You will see a usage message; take the time to read through it; it is not an error.
 
-You are now ready to test your project. For example, to test a project in the "~/Desktop/C00" directory with additional flags, you can use:
+You are now ready to test your project. For refernce, go to [Usage](#usage)
 
-```bash
-./C00tester ~/Desktop/C00 -fd
+To run another tester, repeat from [step 1](#Initialization)
+
+### Usage
+
+#### Basic usage:
+
+```
+[name] [target_directory]
 ```
 
-To run another tester, repeat from [step 1](#Usage)
+Runs tests on the specified target directory, which should contain files to be tested (e.g., `ex00`, `ex01`).
+
+If not specified, the tester will assume the current working directory is the target directory. You can place the tester inside the tested directory for convenience.
+
+Example:
+
+`./C00tester C00`
+
+![basic test](assets/basic_test.png)
+
+#### flags
+
+There are several flags available to change the displayed information.
+
+ - `-l` : List - Display test case status
+ - `-a` : All - Display all test cases
+ - `-f` : Fail - Display only failed test results
+ - `-d` : Detail - Display test cases in detail
+
+These flags are designed to synergize seamlessly, allowing for a dynamic combination of options:
+
+ - `-ad`  : All Detail - Display all test cases in detail
+ - `-af`  : All Fail - Display all failed test cases
+ - `-fd`  : Fail Detail - Display *first* failed test case in detail
+ - `-afd` : All Fail Detail - Display all failed test cases in detail
+
+Example:
+ - `[name]`
+![Run with no flag example](assets/run_with_no_flag_example.png)
+ - `[name] -l`
+![Run with -l flag example](assets/run_with_l_example.png)
+ - `[name] -afd`
+![Run with -afd flag example](assets/run_with_afd_example.png)
+
+##### Test case display format
+
+Unprintable characters are converted into hexadecimal representations, displayed in cyan for differentiation.
+
+Differences between the actual output and the expected output are highlighted in yellow.
+
+#### Termination
+
+In case you want to terminate the program, hold `ctrl + c`
+
+In the event of an unexpected termination leading to residual temporary files, you can remove them by executing the following command:
+
+**WARNING** Exercise prudence when employing the command, as all files prefixed with "temp" will be deleted.
+
+`find . -name "temp*" type f -print -delete`
+
+This command will systematically identify and delete all files commencing with "temp" in the current working directory and its subdirectories.
 
 ## linkage
 

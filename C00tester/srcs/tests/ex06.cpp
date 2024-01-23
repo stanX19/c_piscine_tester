@@ -31,7 +31,7 @@ static std::string ft_print_comb2(void)
 
 UnitTest getEx06test() {
 	std::string name = "ft_print_comb2";
-	UnitTest test("ex06");
+	UnitTest test("ex06", 5);
 	test.addRequiredFile(name + ".c");
 	test.addTemporaryMainFile(
 		"void " + name + "(void);",

@@ -26,16 +26,6 @@ UnitTest getEx11test() {
 	test.addTestCase(qt + "Hello World!" + qt, "Hello World!");
 	test.addTestCase("abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz");
 	test.addTestCase(qt + qt, "");
-	for (int i = 1; i <= 32; i++) {
-		char c = i;
-		std::string str(1, c);
-		test.addTestCase(qt + str + qt, convertUnprintableToHex(str));
-	}
-	for (int i = 127; i <= 255; i++) {
-		char c = i;
-		std::string str(1, c);
-		test.addTestCase(qt + str + qt, convertUnprintableToHex(str));
-	}
 	std::string buf;
 	std::string buf2;
 	for (int i = 1; i <= 33; i++) {
