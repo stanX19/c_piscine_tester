@@ -83,9 +83,9 @@ Example:
  - `[name] -l`
  - `[name] -afd`
 
-<img src="assets/run_with_l_example.png" width="300">
-<img src="assets/run_with_no_flag_example.png" width="300">
-<img src="assets/run_with_afd_example.png" width="300">
+	<img src="assets/run_with_l_example.png" width="400">
+	<img src="assets/run_with_no_flag_example.png" width="400">
+	<img src="assets/run_with_afd_example.png" width="400">
 
 #### Test case display format
 
