@@ -3,7 +3,7 @@
 static std::string qt("\"", 1);
 
 std::string out_strstr(const char *dst, const char *src) {
-	const char *ret = std::strstr(dst, src);
+	const char *ret = strstr(dst, src);
 	if (ret == 0)
 		return "Not found";
 	return "Index " + std::to_string(ret - dst);

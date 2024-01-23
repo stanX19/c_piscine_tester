@@ -1,9 +1,9 @@
 #include "C03tester.hpp"
-
+#include <string.h>
 static std::string qt("\"", 1);
 
 static std::string get_result(const char* s1, const char *s2, unsigned int n) {
-	int val = std::strncmp(s1, s2, n);
+	int val = strncmp(s1, s2, n);
 	if (val < 0) val = -1;
 	if (val > 0) val = 1;
 	return std::to_string(val);
