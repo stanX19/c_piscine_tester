@@ -82,7 +82,7 @@ These flags are designed to synergize seamlessly, allowing for a dynamic combina
 
 Example:
  - `[name]`
-![Run with no flag example](assets/run_with_no_flag_example.png)
+<img src="assets/run_with_no_flag_example.png" width="300">
  - `[name] -l`
 ![Run with -l flag example](assets/run_with_l_example.png)
  - `[name] -afd`
@@ -103,7 +103,7 @@ you can remove residual temporary files by executing the following command:
 
 `find . -name "temp*" type f -print -delete`
 
-*WARNING* all files prefixed with "temp" will be deleted.
+**WARNING** all files prefixed with "temp" will be deleted.
 
 ## linkage
 
