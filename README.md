@@ -62,8 +62,6 @@ Runs tests on the specified target directory, which should contain files to be t
 
 If not specified, the tester will assume the current working directory is the target directory. You can place the tester inside the tested directory for convenience.
 
-Example:
-
 #### flags
 
 There are several flags available to change the displayed information.
@@ -73,7 +71,7 @@ There are several flags available to change the displayed information.
  - `-f` : Fail - Display only failed test results
  - `-d` : Detail - Display test cases in detail
 
-These flags are designed to synergize seamlessly, allowing for a dynamic combination of options:
+You can combine the flags to achieve a dynamic combination of options:
 
  - `-ad`  : All Detail - Display all test cases in detail
  - `-af`  : All Fail - Display all failed test cases
@@ -85,9 +83,9 @@ Example:
  - `[name] -l`
  - `[name] -afd`
 
-<img src="assets/run_with_l_example.png" width="600">
-<img src="assets/run_with_no_flag_example.png" width="600">
-<img src="assets/run_with_afd_example.png" width="600">
+<img src="assets/run_with_l_example.png" width="300">
+<img src="assets/run_with_no_flag_example.png" width="300">
+<img src="assets/run_with_afd_example.png" width="300">
 
 #### Test case display format
 
