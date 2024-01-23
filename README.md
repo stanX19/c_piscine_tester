@@ -82,11 +82,12 @@ These flags are designed to synergize seamlessly, allowing for a dynamic combina
 
 Example:
  - `[name]`
-	<img src="assets/run_with_no_flag_example.png" width="600">
  - `[name] -l`
-	<img src="assets/run_with_l_example.png" width="600">
  - `[name] -afd`
-	<img src="assets/run_with_afd_example.png" width="600">
+
+<img src="assets/run_with_afd_example.png" width="600">
+<img src="assets/run_with_l_example.png" width="600">
+<img src="assets/run_with_no_flag_example.png" width="600">
 
 #### Test case display format
 
