@@ -9,6 +9,6 @@ fclean:
 pull:
 	cd CUnitTest && git pull && cd .. && git pull
 push: fclean
-	cd CUnitTest && git add . && git commit -m "auto"&& git push && cd ..
 	git add . && git commit -m "auto" && git push
+	cd CUnitTest && git add . && git commit -m "auto" && git push && cd ..
 .PHONY: pull fclean push

@@ -9,16 +9,8 @@ This C++ tool tests C files for assignments in the C piscine. It creates a tempo
 ## Features
 
 - Comprehensive test cases covering edge scenarios.
-
-	![Test case example](assets/test_case_example.png)
-
 - Meticulously designed flags for different display modes.
-
-	[Flags](#flags)
-
 - User-friendly UI to pinpoint test case failures.
-
-	![Fail case exmaple](assets/fail_case_example.png)
 
 ## Getting Started
 
@@ -72,10 +64,6 @@ If not specified, the tester will assume the current working directory is the ta
 
 Example:
 
-`./C00tester C00`
-
-![basic test](assets/basic_test.png)
-
 #### flags
 
 There are several flags available to change the displayed information.
@@ -100,7 +88,7 @@ Example:
  - `[name] -afd`
 ![Run with -afd flag example](assets/run_with_afd_example.png)
 
-##### Test case display format
+#### Test case display format
 
 Unprintable characters are converted into hexadecimal representations, displayed in cyan for differentiation.
 
@@ -110,13 +98,12 @@ Differences between the actual output and the expected output are highlighted in
 
 In case you want to terminate the program, hold `ctrl + c`
 
-In the event of an unexpected termination leading to residual temporary files, you can remove them by executing the following command:
+you can remove residual temporary files by executing the following command:
 
-**WARNING** Exercise prudence when employing the command, as all files prefixed with "temp" will be deleted.
 
 `find . -name "temp*" type f -print -delete`
 
-This command will systematically identify and delete all files commencing with "temp" in the current working directory and its subdirectories.
+*WARNING* all files prefixed with "temp" will be deleted.
 
 ## linkage
 
