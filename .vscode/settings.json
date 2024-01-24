@@ -73,6 +73,7 @@
 		"ratio": "cpp",
 		"stack": "cpp",
 		"codecvt": "cpp",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"filesystem": "cpp"
 	}
 }

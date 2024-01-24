@@ -90,17 +90,15 @@ UnitTestGenExpected getEx12test() {
 		"if (argv[2] != dst2) {printf(\"return value != addr\"); return 0; }"
 	);
 	test.addTestCase(qt + "hello world" + qt + " 12");
-	test.addTestCase(qt + "This\1is\23a\27string\22that\30is\11seperated\7by\25unprintable\6characters." + qt + " 62");
+	test.addTestCase(qt + "This\1is\23a\27string\22seperated\7by\25unprintable\6characters." + qt + " 54");
 	test.addTestCase(qt + "a b c d e f g h i j k l m n o p q r s t u v w x y z" + qt + " 52");
 	test.addTestCase(qt + "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z" + qt + " 52");
 	test.addTestCase(qt + "ABCDEF GHIJKLMNOP QRSTUV WXYZ" + qt + " 30");
 	test.addTestCase(qt + "abc defghij klmnopqr stuvwxyz" + qt + " 30");
 	test.addTestCase(qt + qt + " 0");
-	test.addTestCase(qt + qt + " 1");
-	test.addTestCase(qt + qt + " 16");
-	test.addTestCase(qt + qt + " 17");
-	test.addTestCase("a 100");
-	test.addTestCase("z 100");
+	test.addTestCase("a 1");
+	test.addTestCase("z 1");
+	test.addTestCase(qt + "This\0is\0a\0string\0seperated\0by\0null\0characters." + qt + " 47");
 	std::string buf;
 	std::string buf2;
 	for (int i = 1; i <= 33; i++) {
@@ -115,11 +113,9 @@ UnitTestGenExpected getEx12test() {
 		buf += str;
 		buf2 += str + utils::generateRandomString(i % 7);
 	}
-	test.addTestCase(qt + buf + qt + " 300");
-	test.addTestCase(qt + buf + qt + " 17");
-	test.addTestCase(qt + buf + qt + " 0");
-	test.addTestCase(qt + buf2 + qt + " 300");
-	test.addTestCase(qt + buf2 + qt + " 26");
-	test.addTestCase(qt + buf2 + qt + " 1");
+	test.addTestCase(qt + buf + qt + " " + std::to_string(buf.size()));
+	test.addTestCase(qt + buf + qt + " " + std::to_string(buf.size() / 2));
+	test.addTestCase(qt + buf2 + qt + " " + std::to_string(buf2.size()));
+	test.addTestCase(qt + buf2 + qt + " " + std::to_string(buf2.size() / 2));
 	return test;
 }
