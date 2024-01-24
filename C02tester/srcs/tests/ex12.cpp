@@ -76,19 +76,21 @@ static inline std::string std_print_mem = "\n"
 "}";
 
 UnitTestGenExpected getEx12test() {
-	UnitTestGenExpected test("ex12", 5);
+	UnitTestGenExpected test("ex12", 2, true);
 	test.addRequiredFile("ft_print_memory.c");
 	test.addTemporaryMainFile(
 		"void	*ft_print_memory(void *addr, unsigned int size);\n" + 
 		std_print_mem,
 
-		"char *ptr1 = std_print_memory(argv[2], atoi(argv[3]));\n"
-		"printf(\" Return Index %li\", ptr1 - argv[2]);\n",
+		"write(1, \"\\n\", 1);\n"
+		"std_print_memory(argv[2], atoi(argv[3]));\n",
 
-		"char *ptr2 = ft_print_memory(argv[2], atoi(argv[3]));\n"
-		"printf(\" Return Index %li\", ptr2 - argv[2]);\n"
+		"write(1, \"\\n\", 1);\n"
+		"char *dst2 = ft_print_memory(argv[2], atoi(argv[3]));\n"
+		"if (argv[2] != dst2) {printf(\"return value != addr\"); return 0; }"
 	);
 	test.addTestCase(qt + "hello world" + qt + " 12");
+	test.addTestCase(qt + "This\1is\23a\27string\22that\30is\11seperated\7by\25unprintable\6characters." + qt + " 62");
 	test.addTestCase(qt + "a b c d e f g h i j k l m n o p q r s t u v w x y z" + qt + " 52");
 	test.addTestCase(qt + "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z" + qt + " 52");
 	test.addTestCase(qt + "ABCDEF GHIJKLMNOP QRSTUV WXYZ" + qt + " 30");
@@ -113,10 +115,10 @@ UnitTestGenExpected getEx12test() {
 		buf += str;
 		buf2 += str + utils::generateRandomString(i % 7);
 	}
-	test.addTestCase(qt + buf + qt + " 1000");
+	test.addTestCase(qt + buf + qt + " 300");
 	test.addTestCase(qt + buf + qt + " 17");
 	test.addTestCase(qt + buf + qt + " 0");
-	test.addTestCase(qt + buf2 + qt + " 1000");
+	test.addTestCase(qt + buf2 + qt + " 300");
 	test.addTestCase(qt + buf2 + qt + " 26");
 	test.addTestCase(qt + buf2 + qt + " 1");
 	return test;

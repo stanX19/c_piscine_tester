@@ -12,6 +12,14 @@ This C++ tool tests C files for assignments in the C piscine. It creates a tempo
 - Meticulously designed flags for different display modes.
 - User-friendly UI to pinpoint test case failures.
 
+## Update
+
+go to `c_piscine_tester`, run
+
+```bash
+make pull
+```
+
 ## Getting Started
 
 ### Installation
@@ -98,7 +106,6 @@ Differences between the actual output and the expected output are highlighted in
 In case you want to terminate the program, hold `ctrl + c`
 
 you can remove residual temporary files by executing the following command:
-
 
 `find . -name "temp*" type f -print -delete`
 

@@ -6,7 +6,7 @@
 /*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:07:21 by myeow             #+#    #+#             */
-/*   Updated: 2024/01/22 15:38:16 by shatan           ###   ########.fr       */
+/*   Updated: 2024/01/24 13:08:39 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	
 	dest_len = ft_strlen(dest);
 	src_len = ft_strlen(src);
-	return src_len;
 	if (size <= dest_len)
 		return (size + src_len);
 	i = 0;

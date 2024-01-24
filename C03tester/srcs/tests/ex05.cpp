@@ -53,7 +53,7 @@ UnitTest getEx05test() {
 		"write(1, dst, 90);"
 		"printf(\" %u\", x);"
 	);
-	test.addTestCase("\"Hello \" \"world!\" 7", out_strlcat("Hello ", "world!", 13));
+	test.addTestCase("\"Hello \" \"world!\" 13", out_strlcat("Hello ", "world!", 13));
 	test.addTestCase("\"\\`~!@#\" \"\\$%^&*()\" 7", out_strlcat("`~!@#", "$%^&*()", 7));
 	for (size_t i = 0; i < 5; i++) {
 		std::string str1 = utils::generateRandomString(i);

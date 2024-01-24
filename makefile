@@ -7,7 +7,8 @@ fclean:
         make -C $$dir fclean; \
     done
 pull:
-	cd CUnitTest && git pull && cd .. && git pull
+	git pull
+	cd CUnitTest && git pull
 push: fclean
 	git add . && git commit -m "auto" && git push
 	cd CUnitTest && git add . && git commit -m "auto" && git push && cd ..
