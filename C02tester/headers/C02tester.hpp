@@ -14,6 +14,7 @@ UnitTest getEx08test();
 UnitTest getEx09test();
 UnitTest getEx10test();
 UnitTest getEx11test();
-UnitTest getEx12test();
+
+UnitTestGenExpected getEx12test();
 
 #endif

@@ -17,8 +17,14 @@ int main(int argc, char **argv) {
 		getEx10test(),
 		getEx11test(),
 	};
+	std::vector<UnitTestGenExpected> tests2 {
+		getEx12test(),
+	};
 	std::cout << "===========C02 Tester==========\n";
-	for (auto &test : tests) {
+	for (UnitTest &test : tests) {
+		test.run();
+	}
+	for (UnitTest &test : tests2) {
 		test.run();
 	}
 }
