@@ -6,25 +6,25 @@
 /*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 22:18:28 by myeow             #+#    #+#             */
-/*   Updated: 2024/01/21 13:07:36 by shatan           ###   ########.fr       */
+/*   Updated: 2024/01/24 15:27:27 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int				i;
-	unsigned int	append_i;
+	int				dst_len;
+	unsigned int	src_idx;
 
-	i = 0;
-	append_i = 0;
-	while (dest[i])
-		++i;
-	while (src[append_i] && append_i < nb)
+	dst_len = 0;
+	src_idx = 0;
+	while (dest[dst_len])
+		++dst_len;
+	while (src[src_idx] && src_idx < nb)
 	{
-		dest[i + append_i] = src[append_i];
-		++append_i;
+		dest[dst_len + src_idx] = src[src_idx];
+		++src_idx;
 	}
-	dest[i + append_i] = 0;
+	dest[dst_len + src_idx] = 0;
 	return (dest);
 }
 /*

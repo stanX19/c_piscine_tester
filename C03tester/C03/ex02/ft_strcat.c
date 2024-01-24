@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myeow <myeow@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:44:24 by myeow             #+#    #+#             */
-/*   Updated: 2024/01/20 14:06:20 by myeow            ###   ########.fr       */
+/*   Updated: 2024/01/24 15:27:01 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcat(char *dest, char *src)
 {
-	int	d;
-	int	s;
+	int	d_idx;
+	int	s_idx;
 
-	d = 0;
-	s = 0;
-	while (*(dest + d))
-		d++;
-	while (*(src + s))
+	d_idx = 0;
+	s_idx = 0;
+	while (dest[d_idx])
+		d_idx++;
+	while (src[s_idx])
 	{
-		*(dest + d + s) = *(src + s);
-		s++;
+		dest[d_idx + s_idx] = src[s_idx];
+		s_idx++;
 	}
-	*(dest + d + s) = 0;
+	dest[d_idx + s_idx] = 0;
 	return (dest);
 }
 /*
