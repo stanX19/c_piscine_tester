@@ -11,40 +11,36 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 
-int	find_base(char *base)
+static inline int	get_index(char hash[256], char c)
+{
+	return hash[(int)(unsigned char)c];
+}
+
+static inline void	set_index(char hash[256], char c, char val)
+{
+	hash[(int)(unsigned char)c] = val;
+}
+
+static int	init_base(char *base, char hash[256])
 {
 	int		i;
-	char	hash[256];
 
 	i = 0;
 	while (i < 256)
-		hash[i++] = 0;
+		hash[i++] = -1;
 	i = 0;
 	while (base[i])
 	{
-		if (hash[(int)base[i]])
-			return (0);
+		if (get_index(hash, base[i]) != -1)
+			return 0;
 		if (base[i] == '+' || base[i] == '-')
-			return (0);
-		hash[(int)base[i]] = 1;
+			return 0;
+		set_index(hash, base[i], i);
 		++i;
 	}
-	return (i);
-}
-
-int	str_find(char *str, char c)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			return (i);
-		i++;
-	}
-	return (-1);
+	return i;
 }
 
 int	ft_atoi_base(char *str, char *base)
@@ -53,12 +49,14 @@ int	ft_atoi_base(char *str, char *base)
 	int				sign;
 	int				idx;
 	long long int	ret;
+	char			hash[256];
 
-	base_len = find_base(base);
+	base_len = init_base(base, hash);
 	if (base_len < 2)
 		return (0);
 	sign = 1;
 	ret = 0;
+	idx = 0;
 	while ((str[idx] == ' ' || (str[idx] >= 9 && str[idx] <= 13)) && str[idx])
 		++idx;
 	while ((str[idx] == '-' || str[idx] == '+') && str[idx])
@@ -66,9 +64,10 @@ int	ft_atoi_base(char *str, char *base)
 		if (str[idx++] == '-')
 			sign *= -1;
 	}
-	while (str[idx])
+	while (get_index(hash, str[idx]) != -1)
 	{
-		ret = ret * base_len + str_find(base, str[idx]);
+		ret = ret * base_len + get_index(hash, str[idx]);
+		++idx;
 	}
 	return ((int)(ret * sign));
 }

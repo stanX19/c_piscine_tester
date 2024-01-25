@@ -4,8 +4,8 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-				"${workspaceFolder}/**/headers/**",
-                "**/headers/**"
+                "${workspaceFolder}/**/headers",
+                "**/headers",
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",
