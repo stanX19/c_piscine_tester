@@ -74,6 +74,25 @@
 		"stack": "cpp",
 		"codecvt": "cpp",
 		"unistd.h": "c",
-		"filesystem": "cpp"
+		"filesystem": "cpp",
+		"any": "cpp",
+		"cfenv": "cpp",
+		"charconv": "cpp",
+		"cinttypes": "cpp",
+		"condition_variable": "cpp",
+		"csetjmp": "cpp",
+		"csignal": "cpp",
+		"cuchar": "cpp",
+		"forward_list": "cpp",
+		"list": "cpp",
+		"unordered_set": "cpp",
+		"regex": "cpp",
+		"future": "cpp",
+		"scoped_allocator": "cpp",
+		"shared_mutex": "cpp",
+		"thread": "cpp",
+		"typeindex": "cpp",
+		"valarray": "cpp",
+		"variant": "cpp"
 	}
 }

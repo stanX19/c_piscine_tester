@@ -98,7 +98,7 @@ UnitTestGenExpected getEx12test() {
 	test.addTestCase(qt + qt + " 0");
 	test.addTestCase("a 1");
 	test.addTestCase("z 1");
-	test.addTestCase(qt + "This\0is\0a\0string\0seperated\0by\0null\0characters." + qt + " 47");
+	test.addTestCase(qt + std::string("This\0is\0a\0string\0seperated\0by\0null\0characters.", 46) + qt + " 47");
 	std::string buf;
 	std::string buf2;
 	for (int i = 1; i <= 33; i++) {

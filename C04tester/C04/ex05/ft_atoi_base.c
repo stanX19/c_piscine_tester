@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 01:53:20 by myeow             #+#    #+#             */
+/*   Created: 2024/01/21 01:53:20 by shatan             #+#    #+#            */
 /*   Updated: 2024/01/24 18:22:08 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -13,17 +13,19 @@
 #include <unistd.h>
 #include <stdio.h>
 
-static inline int	get_index(char hash[256], char c)
+static inline int	get_index(int hash[256], char c)
 {
-	return hash[(int)(unsigned char)c];
+	unsigned char c2 = c;
+	return hash[(int)c2];
 }
 
-static inline void	set_index(char hash[256], char c, char val)
+static inline void	set_index(int hash[256], char c, int val)
 {
-	hash[(int)(unsigned char)c] = val;
+	unsigned char c2 = c;
+	hash[(int)c2] = val;
 }
 
-static int	init_base(char *base, char hash[256])
+static int	init_base(char *base, int hash[256])
 {
 	int		i;
 
@@ -49,7 +51,7 @@ int	ft_atoi_base(char *str, char *base)
 	int				sign;
 	int				idx;
 	long long int	ret;
-	char			hash[256];
+	int				hash[256];
 
 	base_len = init_base(base, hash);
 	if (base_len < 2)
