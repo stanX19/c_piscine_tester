@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 00:38:29 by myeow             #+#    #+#             */
-/*   Updated: 2024/01/24 19:19:51 by shatan           ###   ########.fr       */
+/*   Created: 2024/01/26 18:41:30 by shatan            #+#    #+#             */
+/*   Updated: 2024/01/26 18:41:32 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	find_base(char *base)
 	return (i);
 }
 
-void	recursion(long long int nbr, char *base_str, int base_nbr) {
+void	recursion(long long int nbr, char *base_str, int base_nbr)
+{
 	if (nbr >= base_nbr)
 		recursion(nbr / base_nbr, base_str, base_nbr);
 	ft_putchar(base_str[nbr % base_nbr]);

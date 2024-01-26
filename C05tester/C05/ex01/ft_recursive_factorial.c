@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
+/*   By: shatan <shatan@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 18:40:42 by shatan            #+#    #+#             */
-/*   Updated: 2024/01/26 18:40:47 by shatan           ###   ########.fr       */
+/*   Created: 2024/01/19 10:52:59 by shatan             #+#    #+#             */
+/*   Updated: 2024/01/19 10:59:39 by shatan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+int	ft_recursive_factorial(int nb)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		++i;
-	return (i);
+	if (nb < 0)
+		return (0);
+	else if (nb == 0)
+		return (1);
+	else
+		return (nb * ft_recursive_factorial(nb - 1));
 }
 /*
 #include <stdio.h>
 int	main()
 {
-	char	*str = "wertoy";
-	char	*str1 = "";
-
-	printf("%d, %d\n", ft_strlen(str), ft_strlen(str1));
+	printf("%d", ft_recursive_factorial(-1));
+	return (0);
 }
 */
