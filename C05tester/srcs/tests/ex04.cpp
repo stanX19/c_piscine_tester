@@ -2,7 +2,7 @@
 
 UnitTest getEx04test() {
 	std::string name = "ft_fibonacci";
-	UnitTest test("ex04");
+	UnitTest test("ex04", 3);
 	test.addRequiredFile(name + ".c");
 	test.addTemporaryMainFile(
 		"int " + name + "(int nb);",

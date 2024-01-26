@@ -1,5 +1,5 @@
-#ifndef C01Tester_hpp
-# define C01Tester_hpp
+#ifndef C02Tester_hpp
+# define C02Tester_hpp
 # include "UnitTest.hpp"
 
 UnitTest getEx00test();
