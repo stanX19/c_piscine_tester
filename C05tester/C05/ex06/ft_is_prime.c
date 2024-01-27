@@ -3,30 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shatan <shatan@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 13:10:41 by shatan             #+#    #+#             */
-/*   Updated: 2024/01/20 01:00:53 by shatan            ###   ########.fr       */
+/*   Created: 2024/01/19 13:10:41 by shatan            #+#    #+#             */
+/*   Updated: 2024/01/20 01:00:53 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+static int	ceil_sqrt(int x) {
+	int start;
+	int end;
+	int mid;
+
+	if (x < 0)
+		return 0;
+    if (x == 0 || x == 1)
+        return x;
+    start = 1;
+	end = x / 2 + 1;
+    while (start < end)
+	{
+        mid = start + (end - start) / 2;
+		if (mid * mid == x)
+			return mid;
+        if (mid * mid < x)
+            start = mid + 1;
+        else
+            end = mid;
+    }
+    return (end);
+}
 
 int	ft_is_prime(int nb)
 {
 	int	i;
+	int sqrt_nb;
 
 	i = 2;
 	if (nb < 2)
 		return (0);
-	else if (nb < 4)
+	if (nb < 4)
 		return (1);
-	else
+	sqrt_nb = ceil_sqrt(nb);
+	while (i <= sqrt_nb)
 	{
-		while (i < ((nb + 1) / 2) + 1)
-		{
-			if (nb % i == 0)
-				return (0);
-			i++;
-		}
+		if (nb % i == 0)
+			return (0);
+		i++;
 	}
 	return (1);
 }
