@@ -41,7 +41,7 @@ static int	init_base(char *base, int hash[256])
 	{
 		if (get_index(hash, base[i]) != -1)
 			return (0);
-		if (base[i] == '+' || base[i] == '-')
+		if (base[i] == '+' || base[i] == '-' || base[i] == ' ')
 			return (0);
 		set_index(hash, base[i], i);
 		++i;
@@ -63,7 +63,7 @@ int	ft_atoi_base(char *str, char *base)
 	sign = 1;
 	ret = 0;
 	idx = 0;
-	while ((str[idx] == ' ' || (str[idx] >= 9 && str[idx] <= 13)) && str[idx])
+	while (str[idx] && str[idx] == ' ')
 		++idx;
 	while ((str[idx] == '-' || str[idx] == '+') && str[idx])
 	{
