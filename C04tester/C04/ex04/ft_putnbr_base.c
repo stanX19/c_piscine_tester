@@ -6,7 +6,7 @@
 /*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:41:30 by shatan            #+#    #+#             */
-/*   Updated: 2024/01/26 18:41:32 by shatan           ###   ########.fr       */
+/*   Updated: 2024/01/28 13:24:13 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int	find_base(char *base)
 	i = 0;
 	while (base[i])
 	{
-		if (hash[(int)base[i]])
+		if (hash[(int)((unsigned char)base[i])])
 			return (0);
 		if (base[i] == '+' || base[i] == '-')
 			return (0);
-		hash[(int)base[i]] = 1;
+		hash[(int)((unsigned char)base[i])] = 1;
 		++i;
 	}
 	return (i);

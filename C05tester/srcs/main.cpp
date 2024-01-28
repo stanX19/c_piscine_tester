@@ -12,6 +12,7 @@ int main(int argc, char **argv) {
 		getEx05test(),
 		getEx06test(),
 		getEx07test(),
+		getEx08test(),
 	};
 	std::cout << "===========C05 Tester==========\n";
 	for (auto &test : tests) {

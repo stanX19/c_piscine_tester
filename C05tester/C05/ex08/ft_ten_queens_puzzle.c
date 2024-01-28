@@ -6,7 +6,7 @@
 /*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 01:03:09 by shatan            #+#    #+#             */
-/*   Updated: 2024/01/25 00:07:41 by shatan           ###   ########.fr       */
+/*   Updated: 2024/01/28 14:00:27 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,3 @@ int	ft_ten_queens_puzzle(void)
 	find_solution(board, &sol, 0);
 	return (sol);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	int i = ft_ten_queens_puzzle();
-	printf("%d\n", i);
-	return (0);
-}
-*/

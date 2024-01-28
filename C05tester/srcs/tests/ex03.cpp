@@ -13,6 +13,10 @@ UnitTest getEx03test() {
 	test.addTestCase("-1 0", "1");
 	test.addTestCase("-1 -1", "0");
 	test.addTestCase("-2 -1", "0");
+	test.addTestCase("-1 2", "1");
+	test.addTestCase("-1 1", "-1");
+	test.addTestCase("1 1", "1");
+	test.addTestCase("1 2", "1");
 	test.addTestCase("-24 2", "576");
 	test.addTestCase("-42 3", "-74088");
 	test.addTestCase("1 2147483647", "1");

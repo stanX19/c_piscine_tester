@@ -6,7 +6,7 @@
 /*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:41:17 by shatan            #+#    #+#             */
-/*   Updated: 2024/01/26 18:41:18 by shatan           ###   ########.fr       */
+/*   Updated: 2024/01/28 13:45:49 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_atoi(char *str)
 		result = result * 10 + (str[i] - '0');
 		++i;
 	}
-	return (((int) result) * sign);
+	return (((int)result) * sign);
 }
 /*
 #include <stdio.h>

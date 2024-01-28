@@ -13,11 +13,15 @@ UnitTest getEx02test() {
 	test.addTestCase("-1 0", "1");
 	test.addTestCase("-1 -1", "0");
 	test.addTestCase("-2 -1", "0");
+	test.addTestCase("-1 2", "1");
+	test.addTestCase("-1 1", "-1");
+	test.addTestCase("1 1", "1");
+	test.addTestCase("1 2", "1");
 	test.addTestCase("-24 2", "576");
 	test.addTestCase("-42 3", "-74088");
-	test.addTestCase("0 2147483647", "0");
 	test.addTestCase("1 2147483647", "1");
 	test.addTestCase("-1 2147483647", "-1");
+	test.addTestCase("0 2147483647", "0");
 	test.addTestCase("2 30", "1073741824");
 	test.addTestCase("-2 31", "-2147483648");
 
