@@ -5,9 +5,9 @@ int main(int argc, char **argv) {
 		return 1;
 	std::vector<std::function<void(UnitTest&)>> set_tests = {
 		setEx00test,
-		// setEx01test,
-		// setEx02test,
-		// setEx03test,
+		setEx01test,
+		setEx02test,
+		setEx03test,
 	};
 	std::cout << "===========C06 Tester==========\n";
 	for (std::function<void(UnitTest&)> set_test : set_tests) {

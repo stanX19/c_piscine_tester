@@ -1,27 +1,19 @@
 #include "C06tester.hpp"
 
-UnitTest getEx01test() {
-	std::string name = "ft_recursive_factorial";
-	UnitTest test("ex01");
-	test.addRequiredFile(name + ".c");
-	test.addTemporaryMainFile(
-		"int " + name + "(int nb);",
-		"printf(\"%i\", " + name + "(atoi(argv[1])));"
-	);
-	test.addTestCase("1", "1");
-	test.addTestCase("2", "2");
-	test.addTestCase("3", "6");
-	test.addTestCase("4", "24");
-	test.addTestCase("5", "120");
-	test.addTestCase("6", "720");
-	test.addTestCase("7", "5040");
-	test.addTestCase("8", "40320");
-	test.addTestCase("9", "362880");
-	test.addTestCase("10", "3628800");
-	test.addTestCase("11", "39916800");
-	test.addTestCase("12", "479001600");
-	test.addTestCase("0", "1");
-	test.addTestCase("-1", "0");
-	test.addTestCase("-2", "0");
-	return test;
+static void addTestCaseArgv(UnitTest &test, std::string str) {
+	std::string answer = str;
+	std::replace(answer.begin(), answer.end(), ' ', '\n');
+	test.addTestCase(str, answer + '\n');
+}
+
+void setEx01test(UnitTest &test) {
+	test.configure("ex01", 1, true);
+	test.addRequiredFile("ft_print_params.c");
+	addTestCaseArgv(test, "Hello world");
+	addTestCaseArgv(test, "Thanks for using my tester instead of that mini moulinette.");
+	test.addTestCase("", "");
+	addTestCaseArgv(test, "OneParamOnly");
+	test.addTestCase("Here comes the unprintable: '\222\356\3\5'", "Here\ncomes\nthe\nunprintable:\n\222\356\3\5\n");
+	addTestCaseArgv(test, "W h a t A b o u t T h i s");
+	addTestCaseArgv(test, "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.");
 }
