@@ -45,8 +45,8 @@ void	bubble_sort(char **array, int len)
 	i = 0;
 	while (i < len - 1)
 	{
-		j = i;
-		while (j < len - 1)
+		j = 0;
+		while (j < len - i - 1)
 		{
 			if (ft_strcmp(array[j], array[j + 1]) > 0)
 				swap(array + j, array + j + 1);
@@ -60,7 +60,7 @@ int	main(int argc, char **argv)
 {
 	int	i;
 
-	bubble_sort(argv, argc);
+	bubble_sort(argv + 1, argc - 1);
 	i = 1;
 	while (i < argc)
 	{

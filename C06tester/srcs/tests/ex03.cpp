@@ -44,6 +44,7 @@ void setEx03test(UnitTest &test) {
 	addTestCaseArgv(test, "My tester is better than that mini moulinette.");
 	addTestCaseArgv(test, "");
 	addTestCaseArgv(test, "OneParamOnly");
-	addTestCaseArgv(test, "C h o p p e d S t r i n g A s U s u a l");
-	addTestCaseArgv(test, "fair~ Scarborough to going you Are");
+	addTestCaseArgv(test, "z y x w v u t s r q p o n m l k j i h g f e d c b a Z Y X W V U T S R Q P O N M L K J I H G F E D C B A");
+	addTestCaseArgv(test, "aba abb aaa aab ABB AAB ABA AAA ZYZ zYZ zyZ zZZ");
+	test.addTestCase("'\13' '\11' '\10' '\07' '\06' '\177'", "\06\n\07\n\10\n\11\n\13\n\177\n");
 }
