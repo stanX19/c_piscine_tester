@@ -18,13 +18,15 @@ UnitTest getEx05test() {
 	test.addTestCase("' 0000000000000000000000000000000000000001' '0123456789'", "1");
 	test.addTestCase("       -------------------++--------+++---1 0123456789", "1");
 	test.addTestCase("-------------------++--------+++-----+---12 0123456789", "-12");
+	test.addTestCase("'   \n\f\r\t\v1234' '0123456789'", "1234");
+	test.addTestCase("'   \n\f\r\t\v \n\f\r\t\v4321' '0123456789'", "4321");
 
 	// invalid case
 	test.addTestCase("CR ReapeatdChars", "0");
 	test.addTestCase("' e' 'Space '", "0");
 	test.addTestCase("'1' ''", "0");
-	test.addTestCase("0 0", "0");
-	test.addTestCase("'   \n\f\r\t\v1234' '0123456789'", "1234");
+	test.addTestCase("A A", "0");
+	test.addTestCase("'   123' '\t\n\f\r\v123'", "0");
 
 	// Different bases
 	test.addTestCase("1234 01", "1");
@@ -33,7 +35,6 @@ UnitTest getEx05test() {
 	test.addTestCase("ZZZ 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", "46655");
 
 	// Unprintable bases
-	test.addTestCase("'   \n\f\r\t\v' '\t\n\f\r\v'", "0");
 	test.addTestCase("'--+--\xFF\xF0---123' '123\xF6\xFF\xF0'", "29");
 
 	// Complex cases
