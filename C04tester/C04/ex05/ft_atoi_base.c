@@ -65,7 +65,7 @@ int	ft_atoi_base(char *str, char *base)
 	idx = 0;
 	while (str[idx] && str[idx] == ' ')
 		++idx;
-	while ((str[idx] == '-' || str[idx] == '+') && str[idx])
+	while (str[idx] && (str[idx] == '-' || str[idx] == '+'))
 	{
 		if (str[idx++] == '-')
 			sign *= -1;

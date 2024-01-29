@@ -14,15 +14,15 @@ UnitTest getEx05test() {
 	test.addTestCase("1 0123456789", "1");
 	test.addTestCase("-1 0123456789", "-1");
 	test.addTestCase("'   12345' '0123456789'", "12345");
-	test.addTestCase("'   543.1' '0123456789'", "543");
-	test.addTestCase("'0000000000000000000000000000000000000001' '0123456789'", "1");
-	test.addTestCase("-------------------++--------+++---1 0123456789", "1");
+	test.addTestCase("'  543.1' '0123456789'", "543");
+	test.addTestCase("' 0000000000000000000000000000000000000001' '0123456789'", "1");
+	test.addTestCase("       -------------------++--------+++---1 0123456789", "1");
 	test.addTestCase("-------------------++--------+++-----+---12 0123456789", "-12");
 
 	// invalid case
 	test.addTestCase("CR ReapeatdChars", "0");
 	test.addTestCase("' e' 'Space '", "0");
-	test.addTestCase("1 \"\"", "0");
+	test.addTestCase("'1' ''", "0");
 	test.addTestCase("0 0", "0");
 	test.addTestCase("'   \n\f\r\t1234' '0123456789'", "0");
 
