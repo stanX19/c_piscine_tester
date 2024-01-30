@@ -1,22 +1,31 @@
 #include "C07tester.hpp"
 
-static void addTestCaseArgv(UnitTest &test, std::string str) {
-	std::istringstream iss(str);
+static std::vector<std::string> splitString(const char* input, std::string charset) {
+    std::vector<std::string> result;
+    result.push_back(input);
+
+    for (auto &sep : charset) {
+        std::vector<std::string> new_result;
+        for (auto &line : result) {
+            std::istringstream stream(line);
+            std::string token;
+            while (std::getline(stream, token, sep)) {
+                new_result.push_back(token);
+            }
+        }
+        result = new_result;
+    }
+    return result;
+}
+
+static void addTestCaseArgv(UnitTest &test, const char* str, const char *sep) {
+	std::vector<std::string> words = splitString(str, sep);
 	std::ostringstream oss;
-	int size;
-	int a, b;
-	iss >> a >> b;
-	if (a < b) {
-		size = b - a;
-		for (int i = a; i < b; i++) {
-			oss << i << ", ";
-		}
-		oss << "size=" << size;
-	}
-	else {
-		oss << "NULL size=0";
-	}
-	test.addTestCase(str, oss.str());
+	for (auto &word: words)
+		oss << "\"" << word << "\", ";
+	std::string answer = oss.str();
+	answer = "[" + answer.substr(0, answer.size() - 2) + "]";
+	test.addTestCase(std::string(str) + " " + sep, oss.str());
 }
 
 void setEx02test(UnitTest &test) {

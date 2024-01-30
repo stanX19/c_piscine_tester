@@ -6,8 +6,9 @@ int main(int argc, char **argv) {
 	std::vector<std::function<void(UnitTest&)>> set_tests = {
 		setEx00test,
 		setEx01test,
-		// setEx02test,
-		// setEx03test,
+		setEx02test,
+		setEx03test,
+		setEx04test,
 	};
 	std::cout << "===========C07 Tester==========\n";
 	for (std::function<void(UnitTest&)> set_test : set_tests) {

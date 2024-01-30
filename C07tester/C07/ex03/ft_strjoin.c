@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myeow <myeow@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 16:03:49 by myeow             #+#    #+#             */
-/*   Updated: 2024/01/29 20:47:42 by myeow            ###   ########.fr       */
+/*   Created: 2024/01/30 17:57:55 by shatan            #+#    #+#             */
+/*   Updated: 2024/01/30 17:58:49 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,52 +14,57 @@
 
 int	ft_strlen(char *str)
 {
-	int	i;
+	int	x;
 
-	i = 0;
-	while (str[i])
-		++i;
-	return (i);
-}
-
-char	*ft_mallocstr(int size, char **strs, char *sep)
-{
-	int		malloc_len;
-	int		i;
-	char	*alloc_str;
-
-	malloc_len = 0;
-	i = -1;
-	while (++i < size)
-		malloc_len += ft_strlen(strs[i]);
-	malloc_len += (size - 1) * ft_strlen(sep);
-	if (size <= 0)
-		malloc_len = 1;
-	alloc_str = (char *)malloc(sizeof(char) * malloc_len);
-	if (!alloc_str)
-		return (0);
-	return (alloc_str);
+	x = 0;
+	while (*str++)
+		x++;
+	return (x);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
+	char	*s;
 	int		i;
 	int		j;
-	char	*catstr;
-	int		catstr_l;
+	int		c;
+	int		total_len;
 
-	catstr = ft_mallocstr(size, strs, sep);
-	catstr_l = 0;
+	total_len = 0;
 	i = -1;
 	while (++i < size)
+		total_len += ft_strlen(strs[i]);
+	total_len += (size - 1) * ft_strlen(sep) + 1;
+	s = malloc(total_len);
+	i = -1;
+	c = 0;
+	while (++i < size)
 	{
-		j = -1;
-		while (strs[i][++j])
-			catstr[catstr_l++] = strs[i][j];
-		j = -1;
-		while (i < size - 1 && sep[++j])
-			catstr[catstr_l++] = sep[j];
+		j = 0;
+		while (strs[i][j] != '\0')
+			s[c++] = strs[i][j++];
+		j = 0;
+		while (sep[j] != '\0' && i != size - 1)
+			s[c++] = sep[j++];
 	}
-	*(catstr + catstr_l) = 0;
-	return (catstr);
+	s[c] = '\0';
+	return (s);
 }
+/*
+int	main(void)
+{
+	char	*strs[] = {"this", "is", "some", "strings", "lol"};
+	char	*sep;
+	char	*result;
+
+	sep = " yo ";
+	result = ft_strjoin(5, strs, sep);
+	if (!(result))
+	{
+		printf("%s\n", result);
+		free(result);
+	}
+	else
+		printf("Memory allocation failed\n");
+}
+*/

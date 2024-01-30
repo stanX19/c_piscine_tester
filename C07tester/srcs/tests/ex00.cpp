@@ -1,7 +1,7 @@
 #include "C07tester.hpp"
 
 void setEx00test(UnitTest &test) {
-	test.configure("ex00", 1, true);
+	test.configure("ex00", 1);
 	test.addTemporaryMainFile(
 		"char	*ft_strdup(char *src);",
 		"char *ret = ft_strdup(argv[1]);"

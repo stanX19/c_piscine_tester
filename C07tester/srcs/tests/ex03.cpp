@@ -1,50 +1,38 @@
 #include "C07tester.hpp"
-#include <cstring>
 
-static int	ft_strcmp(const std::string &s1, const std::string &s2)
-{
-	int				i;
-	unsigned int	s1i;
-	unsigned int	s2i;
-
-	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
-	{
-		i++;
+static void addTestCaseArgv(UnitTest &test, std::string str, std::string sep) {
+	std::istringstream iss(str);
+	std::ostringstream oss;
+	std::string buf;
+	std::vector<std::string> strs;
+	while(iss >> buf) {
+		strs.push_back(buf);
 	}
-	s1i = s1[i];
-	s2i = s2[i];
-	return (s1i < s2i);
-}
-
-static std::string genExpected(const std::string& inputString) {
-    std::istringstream iss(inputString);
-    std::vector<std::string> words;
-    std::string word;
-
-    while (std::getline(iss, word, ' ')) {
-        words.push_back(word);
-    }
-    std::sort(words.begin(), words.end(), ft_strcmp);
-    std::ostringstream oss;
-    for (const auto& w : words) {
-        oss << w << '\n';
-    }
-    return oss.str();
-}
-
-static void addTestCaseArgv(UnitTest &test, std::string str) {
-	test.addTestCase(str, genExpected(str));
+	for (int i = 0; i < (int)strs.size(); i++)
+	{
+		oss << strs[i];
+		if (i != ((int)strs.size()) - 1)
+			oss << sep;
+	}
+	test.addTestCase(str + " '" + sep + "'", oss.str());
 }
 
 void setEx03test(UnitTest &test) {
-	test.configure("ex03", 1, true);
-	test.addRequiredFile("ft_sort_params.c");
-	addTestCaseArgv(test, "Hello world");
-	addTestCaseArgv(test, "My tester is better than that mini moulinette.");
-	addTestCaseArgv(test, "");
-	addTestCaseArgv(test, "OneParamOnly");
-	addTestCaseArgv(test, "z y x w v u t s r q p o n m l k j i h g f e d c b a Z Y X W V U T S R Q P O N M L K J I H G F E D C B A");
-	addTestCaseArgv(test, "aba abb aaa aab ABB AAB ABA AAA ZYZ zYZ zyZ zZZ");
-	test.addTestCase("'\13' '\11' '\10' '\07' '\06' '\177'", "\06\n\07\n\10\n\11\n\13\n\177\n");
+	test.configure("ex03", 1);
+	test.addRequiredFile("ft_strjoin.c");
+	test.addTemporaryMainFile(
+		"char	*ft_strjoin(int size, char **strs, char *sep);",
+		"char **strs = argv + 1;"
+		"int size = argc - 2;"
+		"char *ret = ft_strjoin(size, strs, argv[argc - 1]);"
+		"printf(\"%s\", ret);"
+		"free(ret);"
+	);
+	addTestCaseArgv(test, "this is a string, you should seperate it by space", " ");
+	addTestCaseArgv(test, "Size1", "|");
+	addTestCaseArgv(test, "All Of This Should Stick Together", "");
+	addTestCaseArgv(test, "Very long sep", "---------------------------------------------------------------------------------------------------------------------------------------------");
+	test.addTestCase("'' '' '' '' 'XoX'", "XoXXoXXoX");
+	addTestCaseArgv(test, "OneVeryLongStringggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg", "Sep");
+	addTestCaseArgv(test, "A B C D E F G H I J K L M N I O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z 0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N I O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z 0 1 2 3 4 5 6 7 8 9", ".");
 }

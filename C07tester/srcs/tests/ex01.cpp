@@ -16,7 +16,7 @@ static void addTestCaseArgv(UnitTest &test, std::string str) {
 }
 
 void setEx01test(UnitTest &test) {
-	test.configure("ex01", 1, true);
+	test.configure("ex01", 1);
 	test.addRequiredFile("ft_range.c");
 	test.addTemporaryMainFile(
 		"int	*ft_range(int min, int max);",

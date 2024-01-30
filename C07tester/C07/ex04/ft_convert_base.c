@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myeow <myeow@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 22:24:22 by myeow             #+#    #+#             */
-/*   Updated: 2024/01/29 20:31:34 by myeow            ###   ########.fr       */
+/*   Updated: 2024/01/30 18:37:23 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	int		b;
 	int		output_len;
 	char	*str;
-	char	*str2;
 
 	if (check_base(base_from) < 2 || check_base(base_to) < 2)
 		return (0);
@@ -94,7 +93,5 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 		return (0);
 	str[output_len] = 0;
 	ft_putnbr_base(value_in_dec, base_to, str, output_len);
-	str2 = str;
-	free(str);
-	return (str2);
+	return (str);
 }
