@@ -9,6 +9,7 @@ int main(int argc, char **argv) {
 		setEx02test,
 		setEx03test,
 		setEx04test,
+		setEx05test,
 	};
 	std::cout << "===========C07 Tester==========\n";
 	for (std::function<void(UnitTest&)> set_test : set_tests) {
