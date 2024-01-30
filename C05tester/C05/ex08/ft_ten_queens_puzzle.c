@@ -6,7 +6,7 @@
 /*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 01:03:09 by shatan            #+#    #+#             */
-/*   Updated: 2024/01/28 14:00:27 by shatan           ###   ########.fr       */
+/*   Updated: 2024/01/30 12:36:38 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,20 @@ void	ft_putdigit(int i)
 	write(1, &i, 1);
 }
 
-int	checksafe(int *board, int row, int col)
+int	checksafe(int *board, int col, int row)
 {
 	int	i;
 
-	i = -1;
-	while (++i < row)
+	i = 0;
+	while (i < col)
 	{
-		if (board[i] == col)
+		if (board[i] == row)
 			return (0);
-		if (i + board[i] == row + col)
+		if (i + board[i] == col + row)
 			return (0);
-		if (i - board[i] == row - col)
+		if (i - board[i] == col - row)
 			return (0);
+		++i;
 	}
 	return (1);
 }
@@ -50,14 +51,15 @@ void	find_solution(int *board, int *sol, int row)
 	}
 	else
 	{
-		col = -1;
-		while (++col < 10)
+		col = 0;
+		while (col < 10)
 		{
 			if (checksafe(board, row, col))
 			{
 				board[row] = col;
 				find_solution(board, sol, row + 1);
 			}
+			col++;
 		}
 	}
 }

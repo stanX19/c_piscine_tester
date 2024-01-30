@@ -12,6 +12,8 @@ UnitTest getEx03test() {
 		test.addTestCase(std::to_string(i), std::to_string(i));
 	test.addTestCase("123456", "123456");
 	test.addTestCase("-114514", "-114514");
+	test.addTestCase("'    ---------++-114'", "114");
+	test.addTestCase("'    \t\n\f\r\v--+-114514.15'", "-114514");
 	test.addTestCase("-2147483648", "-2147483648");
 	test.addTestCase("2147483647", "2147483647");
 

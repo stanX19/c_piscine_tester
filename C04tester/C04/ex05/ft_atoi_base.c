@@ -6,7 +6,7 @@
 /*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 01:53:20 by shatan            #+#    #+#             */
-/*   Updated: 2024/01/26 18:40:01 by shatan           ###   ########.fr       */
+/*   Updated: 2024/01/30 12:55:39 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,10 @@
 
 static inline int	is_whitespace(char c)
 {
-	switch (c)
-	{
-	case ' ':
-		return 1;
-	case '\t':
-		return 1;
-	case '\r':
-		return 1;
-	case '\n':
-		return 1;
-	case '\v':
-		return 1;
-	case '\f':
-		return 1;
-	default:
-		return 0;
-	}
+	if (c == ' ' || c == '\t' || c == '\r' || c == '\n' || c == '\v'
+		|| c == '\f')
+		return (1);
+	return (0);
 }
 
 static inline int	get_index(int hash[256], char c)

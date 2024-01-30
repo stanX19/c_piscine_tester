@@ -6,7 +6,7 @@
 /*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:41:17 by shatan            #+#    #+#             */
-/*   Updated: 2024/01/28 13:45:49 by shatan           ###   ########.fr       */
+/*   Updated: 2024/01/30 13:29:36 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@ int	ft_atoi(char *str)
 {
 	int				sign;
 	int				i;
-	unsigned int	result;
+	int				result;
 
 	sign = 1;
 	i = 0;
@@ -27,12 +27,12 @@ int	ft_atoi(char *str)
 			sign *= -1;
 		++i;
 	}
-	while ((str[i] >= '0' && str[i] <= '9') && str[i])
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - '0');
 		++i;
 	}
-	return (((int)result) * sign);
+	return (result * sign);
 }
 /*
 #include <stdio.h>
