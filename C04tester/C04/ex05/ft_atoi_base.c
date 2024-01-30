@@ -13,6 +13,27 @@
 #include <stdio.h>
 #include <unistd.h>
 
+static inline int	is_whitespace(char c)
+{
+	switch (c)
+	{
+	case ' ':
+		return 1;
+	case '\t':
+		return 1;
+	case '\r':
+		return 1;
+	case '\n':
+		return 1;
+	case '\v':
+		return 1;
+	case '\f':
+		return 1;
+	default:
+		return 0;
+	}
+}
+
 static inline int	get_index(int hash[256], char c)
 {
 	unsigned char	c2;
@@ -41,7 +62,7 @@ static int	init_base(char *base, int hash[256])
 	{
 		if (get_index(hash, base[i]) != -1)
 			return (0);
-		if (base[i] == '+' || base[i] == '-')
+		if (base[i] == '+' || base[i] == '-' || is_whitespace(base[i]))
 			return (0);
 		set_index(hash, base[i], i);
 		++i;
@@ -63,9 +84,9 @@ int	ft_atoi_base(char *str, char *base)
 	sign = 1;
 	ret = 0;
 	idx = 0;
-	while ((str[idx] == ' ' || (str[idx] >= 9 && str[idx] <= 13)) && str[idx])
+	while (str[idx] && is_whitespace(str[idx]))
 		++idx;
-	while ((str[idx] == '-' || str[idx] == '+') && str[idx])
+	while (str[idx] && (str[idx] == '-' || str[idx] == '+'))
 	{
 		if (str[idx++] == '-')
 			sign *= -1;

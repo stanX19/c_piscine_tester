@@ -1,29 +1,33 @@
 #include "C06tester.hpp"
 
-UnitTest getEx02test() {
-	std::string name = "ft_iterative_power";
-	UnitTest test("ex02");
-	test.addRequiredFile(name + ".c");
-	test.addTemporaryMainFile(
-		"int " + name + "(int nb, int power);",
-		"printf(\"%i\", " + name + "(atoi(argv[1]), atoi(argv[2])));"
-	);
-	test.addTestCase("2 5", "32");
-	test.addTestCase("5 0", "1");
-	test.addTestCase("-1 0", "1");
-	test.addTestCase("-1 -1", "0");
-	test.addTestCase("-2 -1", "0");
-	test.addTestCase("-1 2", "1");
-	test.addTestCase("-1 1", "-1");
-	test.addTestCase("1 1", "1");
-	test.addTestCase("1 2", "1");
-	test.addTestCase("-24 2", "576");
-	test.addTestCase("-42 3", "-74088");
-	test.addTestCase("1 2147483647", "1");
-	test.addTestCase("-1 2147483647", "-1");
-	test.addTestCase("0 2147483647", "0");
-	test.addTestCase("2 30", "1073741824");
-	test.addTestCase("-2 31", "-2147483648");
+static std::string genExpected(const std::string& inputString) {
+    std::istringstream iss(inputString);
+    std::vector<std::string> words;
+    std::string word;
 
-	return test;
+    while (std::getline(iss, word, ' ')) {
+        words.push_back(word);
+    }
+    std::reverse(words.begin(), words.end());
+    std::ostringstream oss;
+    for (const auto& w : words) {
+        oss << w << '\n';
+    }
+    return oss.str();
+}
+
+static void addTestCaseArgv(UnitTest &test, std::string str) {
+	test.addTestCase(str, genExpected(str));
+}
+
+void setEx02test(UnitTest &test) {
+	test.configure("ex02", 1, true);
+	test.addRequiredFile("ft_rev_params.c");
+	addTestCaseArgv(test, "Hello world");
+	addTestCaseArgv(test, "Thanks again for using my tester instead of that mini moulinette.");
+	addTestCaseArgv(test, "");
+	addTestCaseArgv(test, "OneParamOnly");
+	test.addTestCase("Here comes the unprintables: '\222\356\3\5\7\322\t\r\b'", "\222\356\3\5\7\322\t\r\b\nunprintables:\nthe\ncomes\nHere\n");
+	addTestCaseArgv(test, "C h o p p e d S t r i n g A s U s u a l");
+	addTestCaseArgv(test, "fair~ Scarborough to going you Are");
 }

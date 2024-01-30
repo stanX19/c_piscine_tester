@@ -12,20 +12,20 @@
 
 #include <unistd.h>
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	int				i;
-	unsigned int	s1i;
-	unsigned int	s2i;
+	unsigned char	c1;
+	unsigned char	c2;
 
 	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
+	while (s1[i] && s1[i] == s2[i])
 	{
 		i++;
 	}
-	s1i = s1[i];
-	s2i = s2[i];
-	return (s1i - s2i);
+	c1 = s1[i];
+	c2 = s2[i];
+	return (c1 - c2);
 }
 
 void	swap(char **a, char **b)
@@ -39,24 +39,20 @@ void	swap(char **a, char **b)
 
 void	bubble_sort(char **array, int len)
 {
-	int	sorted;
 	int	i;
+	int j;
 
-	sorted = 0;
-	i = 1;
-	while (sorted != len - 2)
+	i = 0;
+	while (i < len - 1)
 	{
-		sorted = 0;
-		while (i < len - 1)
+		j = 0;
+		while (j < len - i - 1)
 		{
-			if (ft_strcmp(array[i], array[i + 1]) > 0)
-				swap(&array[i], &array[i + 1]);
-			else
-				sorted++;
-			i++;
+			if (ft_strcmp(array[j], array[j + 1]) > 0)
+				swap(array + j, array + j + 1);
+			j++;
 		}
-		len--;
-		i = 1;
+		i++;
 	}
 }
 
@@ -64,13 +60,14 @@ int	main(int argc, char **argv)
 {
 	int	i;
 
-	bubble_sort(argv, argc);
-	i = 0;
-	while (i++ < argc - 1)
+	bubble_sort(argv + 1, argc - 1);
+	i = 1;
+	while (i < argc)
 	{
 		while (*argv[i])
 			write(1, argv[i]++, 1);
 		write(1, "\n", 1);
+		++i;
 	}
 	return (0);
 }
