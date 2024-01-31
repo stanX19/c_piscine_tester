@@ -33,7 +33,7 @@ void setEx02test(UnitTest &test) {
 		"else {"
 		"	for (int i = 0; i < size; i++) { printf(\"%i, \", ret[i]); }"
 		"	free(ret);"
-		"}:w"
+		"}"
 		"printf(\"size=%i\", size);"
 	);
 	addTestCaseArgv(test, "0 1");
