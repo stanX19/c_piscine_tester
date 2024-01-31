@@ -30,10 +30,11 @@ void setEx02test(UnitTest &test) {
 		"int size = ft_ultimate_range(&ret, a, b);"
 		"if (!ret)"
 		"	printf(\"NULL \");"
-		"else"
+		"else {"
 		"	for (int i = 0; i < size; i++) { printf(\"%i, \", ret[i]); }"
+		"	free(ret);"
+		"}:w"
 		"printf(\"size=%i\", size);"
-		"free(ret);"
 	);
 	addTestCaseArgv(test, "0 1");
 	addTestCaseArgv(test, "1 10");
