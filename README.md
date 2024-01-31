@@ -79,6 +79,8 @@ There are several flags available to change the displayed information.
  - `-f` : Fail - Display only failed test results
  - `-d` : Detail - Display test cases in detail
 
+ - `--sn` : Silence Norm - ignore norm errors
+
 You can combine the flags to achieve a dynamic combination of options:
 
  - `-ad`  : All Detail - Display all test cases in detail

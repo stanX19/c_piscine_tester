@@ -2,19 +2,21 @@
 
 static void addTestCaseArgv(UnitTest &test, std::string str, std::string sep) {
 	std::istringstream iss(str);
-	std::ostringstream oss;
+	std::ostringstream out_oss;
+	std::ostringstream in_oss;
 	std::string buf;
 	std::vector<std::string> strs;
 	while(iss >> buf) {
+		in_oss << "'" + buf + "' ";
 		strs.push_back(buf);
 	}
 	for (int i = 0; i < (int)strs.size(); i++)
 	{
-		oss << strs[i];
+		out_oss << strs[i];
 		if (i != ((int)strs.size()) - 1)
-			oss << sep;
+			out_oss << sep;
 	}
-	test.addTestCase(str + " '" + sep + "'", oss.str());
+	test.addTestCase(in_oss.str() + " '" + sep + "'", out_oss.str());
 }
 
 void setEx03test(UnitTest &test) {

@@ -22,6 +22,5 @@ void setEx01test(UnitTest &test)  {
 	"}\n"
 	);
 	test.addRequiredFile("ft_boolean.h");
-
 	test.addTestCase("None", "ft_putchar ran; ft_swap ran; ft_putstr ran; ft_strlen ran; ft_strcmp ran; ");
 }
