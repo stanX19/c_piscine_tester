@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_params.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stan <stan@student.42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: shatan <shatan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 19:08:31 by stan              #+#    #+#             */
-/*   Updated: 2022/04/14 19:18:10 by stan             ###   ########.fr       */
+/*   Updated: 2024/01/31 12:03:03 by shatan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	swap(char **a, char **b)
 void	bubble_sort(char **array, int len)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (i < len - 1)
