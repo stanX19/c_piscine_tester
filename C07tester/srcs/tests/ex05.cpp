@@ -32,8 +32,8 @@ static void addTestCaseArgv(UnitTest &test, const char* str, const char *sep) {
 	test.addTestCase("'" + std::string(str) + "' '" + sep + "'", answer);
 }
 
-void setEx05test(UnitTest &test) {
-	test.configure("ex05", 1);
+UnitTest getEx05test() {
+	UnitTest test("ex05", 1);
 	test.addRequiredFile("ft_split.c");
 	test.addTemporaryMainFile(
 		"char	**ft_split(char *str, char *charset);",
@@ -72,4 +72,6 @@ void setEx05test(UnitTest &test) {
 	addTestCaseArgv(test, "Destory the unprintables!!! \1\2\3\4\4\5\6\177 Roarr!!", " \1\2\3\4\4\5\6\177");
 	addTestCaseArgv(test, "Ratatatatatatatatatata", "a");
 	addTestCaseArgv(test, "HahhaHahaaHahhhaaahahahaaHAHAHAAHHaHaHahahHAhaHAAHAHAhAh", "ha");
+
+	return test;
 }

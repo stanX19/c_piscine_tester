@@ -20,8 +20,8 @@ static void addTestCaseArgv(UnitTest &test, std::string str) {
 	test.addTestCase(str, genExpected(str));
 }
 
-void setEx02test(UnitTest &test) {
-	test.configure("ex02", 1, true);
+UnitTest getEx02test() {
+	UnitTest test("ex02", 1, true);
 	test.addRequiredFile("ft_rev_params.c");
 	addTestCaseArgv(test, "Hello world");
 	addTestCaseArgv(test, "Thanks again for using my tester instead of that mini moulinette.");
@@ -30,4 +30,6 @@ void setEx02test(UnitTest &test) {
 	test.addTestCase("Here comes the unprintables: '\222\356\3\5\7\322\t\r\b'", "\222\356\3\5\7\322\t\r\b\nunprintables:\nthe\ncomes\nHere\n");
 	addTestCaseArgv(test, "C h o p p e d S t r i n g A s U s u a l");
 	addTestCaseArgv(test, "fair~ Scarborough to going you Are");
+
+	return test;
 }

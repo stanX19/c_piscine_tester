@@ -1,7 +1,7 @@
 #include "C08tester.hpp"
 
-void setEx03test(UnitTest &test)  {
-	test.configure("ex03", 1);
+UnitTest getEx03test()  {
+	UnitTest test("ex03", 1);
 	test.addTemporaryMainFile(
 	"#include \"ft_point.h\"\n"
 	"void set_point(t_point *point)\n"
@@ -15,4 +15,6 @@ void setEx03test(UnitTest &test)  {
 	"return (0);\n"
 	);
 	test.addRequiredFile("ft_point.h");
+
+	return test;
 }

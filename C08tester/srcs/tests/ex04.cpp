@@ -18,8 +18,8 @@ static void addTestCaseArgv(UnitTest &test, const char *argv) {
 	test.addTestCase(oss_in.str(), oss_out.str());
 }
 
-void setEx04test(UnitTest &test) {
-	test.configure("ex04", 1, true);
+UnitTest getEx04test() {
+	UnitTest test("ex04", 1, true);
 	test.addTemporaryHeaderFile(
 		"#ifndef FT_STOCK_STR_H\n"
 		"# define FT_STOCK_STR_H\n"
@@ -66,4 +66,6 @@ void setEx04test(UnitTest &test) {
 	test.addTestCase("''", "stocks[0]: [0, \"\", \"\"]\nstocks[1]: NULL");
 	addTestCaseArgv(test, "OuchhhHHHHHHHHHHHHHHH");
 	addTestCaseArgv(test, "\277 \2 \3 \4 \5 \200");
+
+	return test;
 }

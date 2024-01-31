@@ -1,7 +1,7 @@
 #include "C08tester.hpp"
 
-void setEx00test(UnitTest &test)  {
-	test.configure("ex00", 1);
+UnitTest getEx00test()  {
+	UnitTest test("ex00", 1);
 	test.addTemporaryMainFile(
 		"#include \"ft.h\"",
 		"ft_putchar('c');"
@@ -18,4 +18,6 @@ void setEx00test(UnitTest &test)  {
 	test.addTemporaryCodeFile("int ft_strcmp(char *str) { (void)str; printf(\"ft_strcmp ran; \"); return 0; }");
 
 	test.addTestCase("None", "ft_putchar ran; ft_swap ran; ft_putstr ran; ft_strlen ran; ft_strcmp ran; ");
+
+	return test;
 }

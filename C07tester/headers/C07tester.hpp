@@ -2,11 +2,11 @@
 # define C07Tester_hpp
 # include "UnitTest.hpp"
 
-void setEx00test(UnitTest &test);
-void setEx01test(UnitTest &test);
-void setEx02test(UnitTest &test);
-void setEx03test(UnitTest &test);
-void setEx04test(UnitTest &test);
-void setEx05test(UnitTest &test);
+UnitTest getEx00test();
+UnitTest getEx01test();
+UnitTest getEx02test();
+UnitTest getEx03test();
+UnitTest getEx04test();
+UnitTest getEx05test();
 
 #endif

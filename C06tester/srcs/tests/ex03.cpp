@@ -37,8 +37,8 @@ static void addTestCaseArgv(UnitTest &test, std::string str) {
 	test.addTestCase(str, genExpected(str));
 }
 
-void setEx03test(UnitTest &test) {
-	test.configure("ex03", 1, true);
+UnitTest getEx03test() {
+	UnitTest test("ex03", 1, true);
 	test.addRequiredFile("ft_sort_params.c");
 	addTestCaseArgv(test, "Hello world");
 	addTestCaseArgv(test, "My tester is better than that mini moulinette.");
@@ -47,4 +47,6 @@ void setEx03test(UnitTest &test) {
 	addTestCaseArgv(test, "z y x w v u t s r q p o n m l k j i h g f e d c b a Z Y X W V U T S R Q P O N M L K J I H G F E D C B A");
 	addTestCaseArgv(test, "aba abb aaa aab ABB AAB ABA AAA ZYZ zYZ zyZ zZZ");
 	test.addTestCase("'\13' '\11' '\10' '\07' '\06' '\177'", "\06\n\07\n\10\n\11\n\13\n\177\n");
+
+	return test;
 }

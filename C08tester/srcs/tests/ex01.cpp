@@ -1,7 +1,7 @@
 #include "C08tester.hpp"
 
-void setEx01test(UnitTest &test)  {
-	test.configure("ex01", 1, true);
+UnitTest getEx01test()  {
+	UnitTest test("ex01", 1, true);
 	test.addTemporaryMainFile(
 	"#include \"ft_boolean.h\"\n"
 	"\n"
@@ -24,4 +24,6 @@ void setEx01test(UnitTest &test)  {
 	test.addRequiredFile("ft_boolean.h");
 	test.addTestCase("One Two Three", "I have an odd number of arguments.\n");
 	test.addTestCase("One Two Three Four", "I have an even number of arguments.\n");
+
+	return test;
 }

@@ -19,8 +19,8 @@ static void addTestCaseArgv(UnitTest &test, std::string str) {
 	test.addTestCase(str, oss.str());
 }
 
-void setEx02test(UnitTest &test) {
-	test.configure("ex02", 1, true);
+UnitTest getEx02test() {
+	UnitTest test("ex02", 1, true);
 	test.addRequiredFile("ft_ultimate_range.c");
 	test.addTemporaryMainFile(
 		"int	ft_ultimate_range(int **range, int min, int max);",
@@ -48,4 +48,5 @@ void setEx02test(UnitTest &test) {
 	addTestCaseArgv(test, "-1 -2");
 	addTestCaseArgv(test, "-1 -2");
 	addTestCaseArgv(test, "2147483647 -2147483648");
+	return test;
 }

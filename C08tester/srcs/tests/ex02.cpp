@@ -1,7 +1,7 @@
 #include "C08tester.hpp"
 
-void setEx02test(UnitTest &test)  {
-	test.configure("ex02", 1);
+UnitTest getEx02test()  {
+	UnitTest test("ex02", 1);
 	test.addTemporaryMainFile(
 	"#include \"ft_abs.h\"\n",
 	"printf(\"%i\", ABS(atoi(argv[1])));"
@@ -16,4 +16,6 @@ void setEx02test(UnitTest &test)  {
 	test.addTestCase("-10", "10");
 	test.addTestCase("-2147483647", "2147483647");
 	test.addTestCase("2147483647", "2147483647");
+
+	return test;
 }

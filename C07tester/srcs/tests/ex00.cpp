@@ -1,7 +1,7 @@
 #include "C07tester.hpp"
 
-void setEx00test(UnitTest &test) {
-	test.configure("ex00", 1);
+UnitTest getEx00test() {
+	UnitTest test("ex00", 1);
 	test.addTemporaryMainFile(
 		"char	*ft_strdup(char *src);",
 		"char *ret = ft_strdup(argv[1]);"
@@ -15,4 +15,5 @@ void setEx00test(UnitTest &test) {
 	test.addTestCase("'This is a very long string'", "This is a very long string");
 	test.addTestCase("'0123456789'", "0123456789");
 	test.addTestCase("'!@#$%^&*(*&^%$#@!#$%^&*)~'", "!@#$%^&*(*&^%$#@!#$%^&*)~");
+	return test;
 }
