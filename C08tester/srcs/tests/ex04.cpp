@@ -20,6 +20,23 @@ static void addTestCaseArgv(UnitTest &test, const char *argv) {
 
 void setEx04test(UnitTest &test) {
 	test.configure("ex04", 1, true);
+	test.addTemporaryHeaderFile(
+		"#ifndef FT_STOCK_STR_H\n"
+		"# define FT_STOCK_STR_H\n"
+		"# include <stdlib.h>\n"
+		"typedef struct s_stock_str\n"
+		"{\n"
+		"	int        size;\n"
+		"	char    *str;\n"
+		"	char    *copy;\n"
+		"}            t_stock_str;\n"
+		"int            ft_strlen(char *str);\n"
+		"char        *ft_strdup(char *str, int size);\n"
+		"t_stock_str    *ft_strs_to_tab(int ac, char **av);\n"
+		"#endif\n",
+
+		"ft_stock_str.h"
+	);
 	test.addRequiredFile("ft_strs_to_tab.c");
 		test.addTemporaryMainFile(
 		"#include \"ft_stock_str.h\"\n",
@@ -42,24 +59,6 @@ void setEx04test(UnitTest &test) {
 		"}"
 		"free(ret);"
 	);
-	test.addTemporaryHeaderFile(
-		"#ifndef FT_STOCK_STR_H\n"
-		"# define FT_STOCK_STR_H\n"
-		"# include <stdlib.h>\n"
-		"typedef struct s_stock_str\n"
-		"{\n"
-		"	int        size;\n"
-		"	char    *str;\n"
-		"	char    *copy;\n"
-		"}            t_stock_str;\n"
-		"int            ft_strlen(char *str);\n"
-		"char        *ft_strdup(char *str, int size);\n"
-		"t_stock_str    *ft_strs_to_tab(int ac, char **av);\n"
-		"#endif\n",
-
-		"ft_stock_str.h"
-	);
-
 	addTestCaseArgv(test, "This is the basic test string");
 	addTestCaseArgv(test, "OneWord");
 	addTestCaseArgv(test, "C h a r");
