@@ -1,7 +1,7 @@
 #include "C08tester.hpp"
 
 void setEx01test(UnitTest &test)  {
-	test.configure("ex01", 1);
+	test.configure("ex01", 1, true);
 	test.addTemporaryMainFile(
 	"#include \"ft_boolean.h\"\n"
 	"\n"
@@ -14,13 +14,14 @@ void setEx01test(UnitTest &test)  {
 	"{\n"
 	"	return ((EVEN(nbr)) ? TRUE : FALSE);\n"
 	"}\n",
+
 	"if (ft_is_even(argc - 1) == TRUE)\n"
 	"	ft_putstr(EVEN_MSG);\n"
 	"else\n"
 	"	ft_putstr(ODD_MSG);\n"
 	"return (SUCCESS);\n"
-	"}\n"
 	);
 	test.addRequiredFile("ft_boolean.h");
-	test.addTestCase("None", "ft_putchar ran; ft_swap ran; ft_putstr ran; ft_strlen ran; ft_strcmp ran; ");
+	test.addTestCase("One Two Three", "I have an odd number of arguments.\n");
+	test.addTestCase("One Two Three Four", "I have an even number of arguments.\n");
 }
