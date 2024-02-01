@@ -11,13 +11,13 @@ UnitTest getEx00test()  {
 		"ft_strcmp(0, 0);"
 	);
 	test.addRequiredFile("ft.h");
-	test.addTemporaryCodeFile("void ft_putchar(char c) { (void)c; printf(\"ft_putchar ran; \"); }");
-	test.addTemporaryCodeFile("void	ft_swap(int *a, int *b) { (void)a; (void)b; printf(\"ft_swap ran; \"); }");
-	test.addTemporaryCodeFile("void	ft_putstr(char *str) { (void)str; printf(\"ft_putstr ran; \"); }");
-	test.addTemporaryCodeFile("int ft_strlen(char *str) { (void)str; printf(\"ft_strlen ran; \"); return 0; }");
-	test.addTemporaryCodeFile("int ft_strcmp(char *str) { (void)str; printf(\"ft_strcmp ran; \"); return 0; }");
+	test.addTemporaryCodeFile("void ft_putchar(char c) { (void)c; printf(\"ft_putchar ok; \"); }");
+	test.addTemporaryCodeFile("void	ft_swap(int *a, int *b) { (void)a; (void)b; printf(\"ft_swap ok; \"); }");
+	test.addTemporaryCodeFile("void	ft_putstr(char *str) { (void)str; printf(\"ft_putstr ok; \"); }");
+	test.addTemporaryCodeFile("int ft_strlen(char *str) { (void)str; printf(\"ft_strlen ok; \"); return 0; }");
+	test.addTemporaryCodeFile("int ft_strcmp(char *str) { (void)str; printf(\"ft_strcmp ok; \"); return 0; }");
 
-	test.addTestCase("None", "ft_putchar ran; ft_swap ran; ft_putstr ran; ft_strlen ran; ft_strcmp ran; ");
+	test.addTestCase("None", "ft_putchar ok; ft_swap ok; ft_putstr ok; ft_strlen ok; ft_strcmp ok; ");
 
 	return test;
 }

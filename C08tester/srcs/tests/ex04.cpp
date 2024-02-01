@@ -13,8 +13,6 @@ static void addTestCaseArgv(UnitTest &test, const char *argv) {
 	}
 	if (oss_out.str().empty())
 		oss_out << "NULL";
-	else
-		oss_out << "stocks[" << idx << "]: NULL";
 	test.addTestCase(oss_in.str(), oss_out.str());
 }
 
@@ -47,14 +45,9 @@ UnitTest getEx04test() {
 		"	return 0;"
 		"}"
 		"int i = 0;"
-		"while(1) {"
-		"	if (ret[i].str != 0) {"
-		"		printf(\"stocks[%i]: [%i, \\\"%s\\\", \\\"%s\\\"]\\n\", i, ret[i].size, ret[i].str, ret[i].copy);"
-		"		free(ret[i].copy);"
-		"	} else {"
-		"		printf(\"stocks[%i]: NULL\", i);"
-		"		break ;"
-		"	}"
+		"while(ret[i].str != 0) {"
+		"	printf(\"stocks[%i]: [%i, \\\"%s\\\", \\\"%s\\\"]\\n\", i, ret[i].size, ret[i].str, ret[i].copy);"
+		"	free(ret[i].copy);"
 		"	++i;"
 		"}"
 		"free(ret);"
@@ -62,8 +55,8 @@ UnitTest getEx04test() {
 	addTestCaseArgv(test, "This is the basic test string");
 	addTestCaseArgv(test, "OneWord");
 	addTestCaseArgv(test, "C h a r");
-	test.addTestCase("", "stocks[0]: NULL");
-	test.addTestCase("''", "stocks[0]: [0, \"\", \"\"]\nstocks[1]: NULL");
+	test.addTestCase("", "");
+	test.addTestCase("''", "stocks[0]: [0, \"\", \"\"]\n");
 	addTestCaseArgv(test, "OuchhhHHHHHHHHHHHHHHH");
 	addTestCaseArgv(test, "\277 \2 \3 \4 \5 \200");
 

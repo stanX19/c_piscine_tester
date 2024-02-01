@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
 		getEx02test(),
 		getEx03test(),
 		getEx04test(),
-		// getEx05test,
+		getEx05test(),
 	};
 	std::cout << "===========C08 Tester==========\n";
 	for (auto &test : tests) {
