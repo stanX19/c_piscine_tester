@@ -6,7 +6,7 @@ Tester for assignments in 42 c piscine
 
 This C++ tool tests C files for assignments in the C piscine. It runs test cases involving processes such as running norme check, generating temporary files, compiling, and using command-line arguments (argv), to produce reliable results.
 
-##### Disclaimer
+### Disclaimer
 
 Beta version: Use at your own risk.
 
